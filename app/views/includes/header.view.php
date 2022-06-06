@@ -9,3 +9,16 @@
     <link rel="stylesheet" href="assets/css/all.min.css">
 </head>
 <body>
+
+<?php
+    $no_nav = [];
+    $no_nav[] = 'login';
+    $no_nav[] = 'signup';
+?>
+
+<?php if(!in_array($controller, $no_nav)): ?>
+    <?php require views_path("includes/navbar"); ?>
+<?php endif; ?>
+
+<div class="container-fluid">
+

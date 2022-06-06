@@ -20,24 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/includes/footer.view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/includes/header.view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/includes/navbar.view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-v4compatibility.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-v4compatibility.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/signup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/auth/signup.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/footer.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/footer.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/header.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/header.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/navbar.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/navbar.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +68,7 @@
       <updated>1654445522847</updated>
       <workItem from="1654445523917" duration="524000" />
       <workItem from="1654446056189" duration="5551000" />
-      <workItem from="1654530431526" duration="4989000" />
+      <workItem from="1654530431526" duration="6532000" />
     </task>
     <servers />
   </component>
@@ -103,14 +92,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="175" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1654445570985" />
+    <state x="713" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1654540880909">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="713" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1654540880909" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1654446053726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1654446053726" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1654540160614">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1654540836006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654540160614" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654540836006" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1654445579693">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
