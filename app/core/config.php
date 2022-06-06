@@ -1,4 +1,4 @@
 <?php
 
-define ("APP_NAME", "Simple point of sale");
+define ("APP_NAME", "Point.of.Sale");
 

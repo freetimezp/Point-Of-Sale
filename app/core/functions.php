@@ -13,3 +13,7 @@ function views_path($view) {
         echo "page not found";
     }
 }
+
+function esc($str) {
+    return htmlspecialchars($str);
+}
