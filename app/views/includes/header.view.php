@@ -13,7 +13,7 @@
 <?php
     $no_nav = [];
     $no_nav[] = 'login';
-    $no_nav[] = 'signup';
+    //$no_nav[] = 'signup';
 ?>
 
 <?php if(!in_array($controller, $no_nav)): ?>
