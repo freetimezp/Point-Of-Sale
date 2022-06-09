@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.js-products {
+    flex-wrap: wrap;
+}
+
+.js-products .card {
+    max-width: 300px;
+    cursor: pointer;
+    margin: 0 10px 30px 10px;
+}
+
+.js-products .card .title {
+    font-size: 30px;
+}
+
+.js-products .card .price {
+    font-size: 24px;
+}
