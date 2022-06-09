@@ -40,6 +40,8 @@
 
 .cart-table .qty input {
     width: 70px;
+    border: 1px solid #3073d6;
+    outline: none;
 }
 
 .cart-table .price {
@@ -53,3 +55,21 @@
     color: red;
     border-left: 2px solid white;
 }
+
+.carts-btns, .carts-total {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.carts-btns button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.carts-block {
+    height: 500px;
+    overflow-y: auto;
+}
+
+
