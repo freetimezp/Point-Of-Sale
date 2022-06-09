@@ -20,7 +20,9 @@
 
             <div class="js-products p-4 d-flex justify-content-center">
                 <div class="card rounded-2">
-                    <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    <a href="">
+                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">Food</div>
                         <div class="price"><b>$5.00</b></div>
@@ -28,7 +30,9 @@
                 </div>
 
                 <div class="card rounded-2">
-                    <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    <a href="">
+                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">Food</div>
                         <div class="price"><b>$5.00</b></div>
@@ -36,7 +40,9 @@
                 </div>
 
                 <div class="card rounded-2">
-                    <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    <a href="">
+                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">Food</div>
                         <div class="price"><b>$5.00</b></div>
@@ -44,7 +50,9 @@
                 </div>
 
                 <div class="card rounded-2">
-                    <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    <a href="">
+                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">Food</div>
                         <div class="price"><b>$5.00</b></div>
@@ -52,7 +60,9 @@
                 </div>
 
                 <div class="card rounded-2">
-                    <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    <a href="">
+                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
+                    </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">Food</div>
                         <div class="price"><b>$5.00</b></div>
@@ -63,9 +73,48 @@
 
         <div class="col-3 p-3">
             <h4 class="text-center">Cart <span class="badge bg-primary rounded-circle">3</span></h4>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover carts-table">
                 <tr>
-                    <th>Image</th><th>Description</th><th>Amount</th>
+                    <th>Image</th><th>Description</th><th>Amount</th><th></th>
+                </tr>
+                <tr class="cart-table">
+                    <td>
+                        <img src="assets/images/item-001.jpg" alt="food">
+                    </td>
+                    <td>
+                        <div class="text-muted title p-1">Food</div>
+                        <div class="p-1 qty">
+                            <span class="input-group-text bg-success text-white"><i class="fa fa-minus"></i></span>
+                            <input class="input-group-text bg-secondary text-white" name="qty" placeholder="3" value="3">
+                            <span class="input-group-text bg-success text-white"><i class="fa fa-plus"></i></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="price"><b>$5.00</b></div>
+                    </td>
+                    <td class="trash">
+                        <i class="fa fa-trash-alt"></i>
+                    </td>
+                </tr>
+
+                <tr class="cart-table">
+                    <td style="width: 70px;">
+                        <img src="assets/images/item-001.jpg" alt="food">
+                    </td>
+                    <td>
+                        <div class="text-muted title p-1">Food</div>
+                        <div class="p-1 qty">
+                            <span class="input-group-text bg-success text-white"><i class="fa fa-minus"></i></span>
+                            <input class="input-group-text bg-secondary text-white" name="qty" placeholder="3" value="3">
+                            <span class="input-group-text bg-success text-white"><i class="fa fa-plus"></i></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="price"><b>$5.00</b></div>
+                    </td>
+                    <td class="trash">
+                        <i class="fa fa-trash-alt"></i>
+                    </td>
                 </tr>
             </table>
         </div>

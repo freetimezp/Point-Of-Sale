@@ -19,3 +19,37 @@
 .js-products .card .price {
     font-size: 24px;
 }
+
+.carts-table {
+    width: 100%;
+}
+
+.carts-table img {
+    max-width: 70px;
+    padding: 2px;
+}
+
+.cart-table .qty {
+    display: flex;
+}
+
+.cart-table .qty span {
+    width: 40px;
+    cursor: pointer;
+}
+
+.cart-table .qty input {
+    width: 70px;
+}
+
+.cart-table .price {
+    font-size: 25px;
+}
+
+.cart-table .trash {
+    padding: 30px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+    border-left: 2px solid white;
+}
