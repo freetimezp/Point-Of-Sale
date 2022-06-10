@@ -72,4 +72,8 @@
     overflow-y: auto;
 }
 
+.navbar-block a, li a{
+    color: #090B26;
+}
+
 
