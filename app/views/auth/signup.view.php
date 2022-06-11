@@ -5,15 +5,15 @@
     <h5 class="mb-5"><?=APP_NAME;?></h5>
 
     <form action="" method="post">
-        <div class="input-group mb-3">
+        <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Username</span>
             <input type="text" name="username" class="form-control" placeholder="Type your name" aria-label="Username">
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Email</span>
             <input type="email" name="email" class="form-control" placeholder="Type your email" aria-label="Email">
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Password</span>
             <input type="text" name="password" class="form-control" placeholder="Type your password" aria-label="Password">
         </div>

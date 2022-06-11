@@ -1,5 +1,10 @@
 <?php
 
-$view = 'auth/signup';
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $_POST['role'] = 'user';
+    $_POST['date'] = date("Y-m-d H:i:s");
 
-require views_path($view);
+    insert($_POST, 'users');
+}
+
+require views_path('auth/signup');

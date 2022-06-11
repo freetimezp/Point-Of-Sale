@@ -50,3 +50,36 @@ function views_path($view) {
 function esc($str) {
     return htmlspecialchars($str);
 }
+
+function allowed_columns($data, $table) {
+    if($table == 'users') {
+        $columns = [
+            'username',
+            'email',
+            'password',
+            'date',
+            'image',
+            'role'
+        ];
+
+        foreach ($data as $key => $value) {
+            if(!in_array($key, $columns)) {
+                unset($data[$key]);
+            }
+        }
+
+        return $data;
+    }
+}
+
+//multiple insert func for all tables.. - check later
+function insert($data, $table) {
+    $clean_array = allowed_columns($data, 'users');
+    $keys = array_keys($clean_array);
+
+    $query = "INSERT INTO $table ";
+    $query .= "(" . implode(",", $keys) . ") VALUES ";
+    $query .= "(:" . implode(",:", $keys) . ")";
+
+    query($query, $clean_array);
+}
