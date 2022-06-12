@@ -117,3 +117,11 @@ function validate($data, $table) {
 
     return $errors;
 }
+
+function set_value($key, $default = '') {
+    if(!empty($_POST[$key])) {
+        return $_POST[$key];
+    }
+
+    return $default;
+}
