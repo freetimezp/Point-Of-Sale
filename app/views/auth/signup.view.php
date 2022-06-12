@@ -4,6 +4,12 @@
     <h3><i class="fa fa-user pe-2"></i>User signup</h3>
     <h5 class="mb-5"><?=APP_NAME;?></h5>
 
+    <?php if($errors): ?>
+        <?php foreach($errors as $error): ?>
+            <div class="alert alert-danger"><?=$error;?></div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <form action="" method="post">
         <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Username</span>
