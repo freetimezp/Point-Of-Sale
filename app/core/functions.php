@@ -125,3 +125,12 @@ function set_value($key, $default = '') {
 
     return $default;
 }
+
+function redirect($page) {
+    header("Location: index.php?page_name=" . $page);
+    die;
+}
+
+function authenticate($row) {
+    $_SESSION['USER'] = $row;
+}

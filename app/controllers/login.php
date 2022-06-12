@@ -1,5 +1,3 @@
 <?php
 
-$view = 'auth/login';
-
-require views_path($view);
+require views_path('auth/login');
