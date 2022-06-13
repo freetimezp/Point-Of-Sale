@@ -84,7 +84,6 @@ function insert($data, $table) {
     query($query, $clean_array);
 }
 
-
 function validate($data, $table) {
     $errors = [];
 
@@ -134,3 +133,30 @@ function redirect($page) {
 function authenticate($row) {
     $_SESSION['USER'] = $row;
 }
+
+function where($data, $table) {
+    $keys = array_keys($data);
+
+    $query = "SELECT * FROM $table WHERE ";
+    foreach ($keys as $key) {
+        $query .= $key . ' = :' . $key . ' AND ';
+    }
+
+    $query = trim($query, 'AND ');
+
+    return query($query, $data);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

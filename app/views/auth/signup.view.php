@@ -13,21 +13,19 @@
     <form action="" method="post">
         <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Username</span>
-            <input
-                    type="text"
-                    name="username"
+            <input  type="text" name="username"
                     value="<?=set_value('username');?>"
                     class="form-control <?=!empty($errors['username'])?'border-danger':'';?>"
-                    placeholder="Type your name" aria-label="Username">
+                    placeholder="Type your name" aria-label="Username"
+            >
         </div>
         <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Email</span>
-            <input
-                    type="email"
-                    name="email"
+            <input  type="email" name="email"
                     value="<?=set_value('email');?>"
                     class="form-control  <?=!empty($errors['email'])?'border-danger':'';?>"
-                    placeholder="Type your email" aria-label="Email">
+                    placeholder="Type your email" aria-label="Email"
+            >
         </div>
         <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Password</span>
