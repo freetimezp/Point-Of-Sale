@@ -22,10 +22,9 @@
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/auth/login.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/login.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/auth/signup.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/signup.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/navbar.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/navbar.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -81,6 +80,7 @@
       <workItem from="1654965057626" duration="5236000" />
       <workItem from="1655035673558" duration="5446000" />
       <workItem from="1655136746095" duration="5670000" />
+      <workItem from="1655217066284" duration="3499000" />
     </task>
     <servers />
   </component>
@@ -100,14 +100,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="540" y="175" key="#CLI_Interpreters" timestamp="1655140929068">
+    <state x="540" y="175" key="#CLI_Interpreters" timestamp="1655222202938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="175" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1655140929068" />
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655141244330">
+    <state x="540" y="175" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1655222202938" />
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655222185687">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655141244330" />
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655222185687" />
     <state x="713" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1654540880909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -152,10 +152,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655053099991" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1655140949359">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1655222203416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1655140949359" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1655222203416" />
     <state x="70" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1655140899920">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

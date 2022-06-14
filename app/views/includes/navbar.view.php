@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Hi, User
+                        <?=!empty($_SESSION['USER'])?auth('username'):'Hi,User';?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="index.php?page_name=profile">Profile</a></li>

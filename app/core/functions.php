@@ -147,6 +147,14 @@ function where($data, $table) {
     return query($query, $data);
 }
 
+function auth($column) {
+    if(!empty($column)) {
+        return $_SESSION['USER'][$column];
+    }
+
+    return 'Hi, User';
+}
+
 
 
 
