@@ -39,18 +39,6 @@ function allowed_columns($data, $table) {
     }
 }
 
-//multiple insert func for all tables.. - check later
-function insert($data, $table) {
-    $clean_array = allowed_columns($data, 'users');
-    $keys = array_keys($clean_array);
-
-    $query = "INSERT INTO $table ";
-    $query .= "(" . implode(",", $keys) . ") VALUES ";
-    $query .= "(:" . implode(",:", $keys) . ")";
-
-    query($query, $clean_array);
-}
-
 function validate($data, $table) {
     $errors = [];
 
@@ -99,19 +87,6 @@ function redirect($page) {
 
 function authenticate($row) {
     $_SESSION['USER'] = $row;
-}
-
-function where($data, $table) {
-    $keys = array_keys($data);
-
-    $query = "SELECT * FROM $table WHERE ";
-    foreach ($keys as $key) {
-        $query .= $key . ' = :' . $key . ' AND ';
-    }
-
-    $query = trim($query, 'AND ');
-
-    return query($query, $data);
 }
 
 function auth($column) {

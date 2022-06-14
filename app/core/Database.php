@@ -2,7 +2,7 @@
 
 class Database
 {
-    private function db_connect() {
+    protected function db_connect() {
         $DBHOST = "localhost";
         $DBNAME = "point_of_sale_db";
         $DBUSER = 'root';
