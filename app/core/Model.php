@@ -4,7 +4,7 @@ class Model extends Database
 {
     //multiple insert func for all tables.. - check later
     public function insert($data) {
-        $clean_array = allowed_columns($data, $this->table);
+        $clean_array = $this->get_allowed_columns($data);
         $keys = array_keys($clean_array);
 
         $query = "INSERT INTO $this->table ";
@@ -27,5 +27,17 @@ class Model extends Database
 
         $db = new Database();
         return $db->query($query, $data);
+    }
+
+    protected function get_allowed_columns($data) {
+        if(!empty($this->allowed_columns)) {
+            foreach ($data as $key => $value) {
+                if(!in_array($key, $this->allowed_columns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        return $data;
     }
 }
