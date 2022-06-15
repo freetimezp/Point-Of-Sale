@@ -9,6 +9,7 @@
             <span class="text-primary">Add product</span>
         </h4>
     </div>
+    
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Product description:</label>
