@@ -36,7 +36,9 @@
 
         <div>
             <button class="btn btn-success">Save</button>
-            <button class="btn btn-secondary">Cancel</button>
+            <a href="index.php?page_name=admin&tab=products">
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </a>
         </div>
     </form>
 </div>

@@ -35,9 +35,24 @@
         </ul>
     </div>
     <div class="border col-10">
-        <h2>
-            <?=strtoupper($tab);?>
-        </h2>
+        <h2><?=strtoupper($tab);?></h2>
+
+        <div>
+            <?php
+                switch($tab) {
+                    case 'products':
+                        require views_path("admin/products");
+                        break;
+
+                    case 'users':
+
+                        break;
+
+                    default:
+                            break;
+                }
+            ?>
+        </div>
     </div>
 </div>
 
