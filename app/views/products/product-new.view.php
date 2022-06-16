@@ -9,11 +9,21 @@
             <span class="text-primary">Add product</span>
         </h4>
     </div>
-    
+
+    <?php if($errors): ?>
+        <?php foreach($errors as $error): ?>
+            <div class="alert alert-danger"><?=$error;?></div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Product description:</label>
-            <input type="text" name="description" class="form-control" placeholder="Product description">
+            <input type="text" name="description"
+                   value="<?=set_value('description');?>"
+                   class="form-control <?=!empty($errors['description'])?'border-danger':'';?>"
+                   placeholder="Product description"
+            >
         </div>
 
         <div class="mb-3">
