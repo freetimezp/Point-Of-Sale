@@ -28,15 +28,23 @@
 
         <div class="mb-3">
             <label class="form-label">Product barcode <span class="text-muted">(optional)</span>:</label>
-            <input type="text" name="barcode" class="form-control" placeholder="Product barcode">
+            <input type="text" name="barcode"
+                   value="<?=set_value('barcode');?>"
+                   class="form-control <?=!empty($errors['barcode'])?'border-danger':'';?>"
+                   placeholder="Product barcode"
+            >
         </div>
 
         <div class="mb-3 input-group">
             <span class="input-group-text">Qty:</span>
-            <input type="number" name="qty" value="1" class="form-control me-2" placeholder="Type qty">
+            <input type="number" name="qty" value="<?=set_value('qty', 1);?>"
+                   class="form-control me-2 <?=!empty($errors['qty'])?'border-danger':'';?>" placeholder="Type qty"
+            >
 
             <span class="input-group-text">Amount:</span>
-            <input type="number" name="amount" step="0.05" value="0.00" class="form-control" placeholder="Type amount">
+            <input type="number" name="amount" step="0.05" value="<?=set_value('amount', 0.00);?>"
+                   class="form-control <?=!empty($errors['amount'])?'border-danger':'';?>" placeholder="Type amount"
+            >
         </div>
 
         <div class="mb-5">
