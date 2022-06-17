@@ -63,4 +63,7 @@ class Product extends Model
 
     }
 
+    public function generate_filename($ext = 'jpg') {
+        return hash("sha1", rand(1000, 999999999)) . '_' .rand(10000, 99999) . '.' . $ext;
+    }
 }

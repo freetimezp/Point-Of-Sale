@@ -42,7 +42,7 @@
             >
 
             <span class="input-group-text">Amount:</span>
-            <input type="number" name="amount" step="0.05" value="<?=set_value('amount', 0.00);?>"
+            <input type="number" name="amount" step="0.01" value="<?=set_value('amount', 0.00);?>"
                    class="form-control <?=!empty($errors['amount'])?'border-danger':'';?>" placeholder="Type amount"
             >
         </div>
