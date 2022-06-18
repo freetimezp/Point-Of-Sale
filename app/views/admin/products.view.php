@@ -17,11 +17,18 @@
         <?php if (!empty($products)): ?>
             <?php foreach ($products as $product): ?>
                 <tr>
-                    <td><?=esc($product->barcode);?></td>
-                    <td><?=esc($product->descripion);?></td>
-                    <td><?=esc($product->qty);?></td>
-                    <td><?=esc($product->amount);?></td>
-                    <td><?=esc($product->date);?></td>
+                    <td><?=esc($product['barcode']);?></td>
+                    <td>
+                        <a href="index.php?page_name=product-single&id=<?=$product['id'];?>">
+                            <?=esc($product['description']);?>
+                        </a>
+                    </td>
+                    <td><?=esc($product['qty']);?></td>
+                    <td><?=esc($product['amount']);?></td>
+                    <td>
+                        <img class="product-image" src="<?=$product['image'];?>" alt="product">
+                    </td>
+                    <td><?=esc($product['date']);?></td>
                     <td>
                         <button class="btn btn-sm btn-success">Edit</button>
                         <button class="btn btn-sm btn-danger">Delete</button>
