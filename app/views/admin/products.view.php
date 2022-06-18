@@ -30,8 +30,12 @@
                     </td>
                     <td><?=esc($product['date']);?></td>
                     <td>
-                        <button class="btn btn-sm btn-success">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <a href="index.php?page_name=product-edit&id=<?=$product['id'];?>">
+                            <button class="btn btn-sm btn-success">Edit</button>
+                        </a>
+                        <a href="index.php?page_name=product-delete&id=<?=$product['id'];?>">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -29,6 +29,24 @@ class Model extends Database
         return $db->query($query, $data);
     }
 
+    public function first($data) {
+        $keys = array_keys($data);
+
+        $query = "SELECT * FROM $this->table WHERE ";
+        foreach ($keys as $key) {
+            $query .= $key . ' = :' . $key . ' AND ';
+        }
+
+        $query = trim($query, 'AND ');
+
+        $db = new Database();
+        if($res = $db->query($query, $data)) {
+            return $res[0];
+        }
+
+        return false;
+    }
+
     protected function get_allowed_columns($data) {
         if(!empty($this->allowed_columns)) {
             foreach ($data as $key => $value) {
