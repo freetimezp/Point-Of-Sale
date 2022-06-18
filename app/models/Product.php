@@ -15,7 +15,7 @@ class Product extends Model
         'views'
     ];
 
-    public function validate($data) {
+    public function validate($data, $id = null) {
         $errors = [];
 
         if(empty($data['description'])) {
@@ -39,21 +39,22 @@ class Product extends Model
             $errors['amount'] = 'Only numbers allowed in amount';
         }
 
-        if(empty($data['image'])) {
-            $errors['image'] = 'Product image is required';
+        if(!$id || ($id && !empty($data['image']))) {
+            if(empty($data['image'])) {
+                $errors['image'] = 'Product image is required';
+            }
+            if(!($data['image']['type'] == 'image/jpeg' || $data['image']['type'] == 'image/png')) {
+                $errors['image'] = 'Only jpg or png images allowed';
+            }
+            if($data['image']['error'] > 0) {
+                $errors['image'] = 'Product image failed to upload';
+            }
+            $image_size = 4;
+            $max_size = $image_size * (1024 * 1024);
+            if($data['image']['size'] > $max_size) {
+                $errors['image'] = 'Product image is to big. Use image less than 4mb';
+            }
         }
-        if(!($data['image']['type'] == 'image/jpeg' || $data['image']['type'] == 'image/png')) {
-            $errors['amount'] = 'Only jpg or png images allowed';
-        }
-        if($data['image']['error'] > 0) {
-            $errors['amount'] = 'Product image failed to upload';
-        }
-        $image_size = 4;
-        $max_size = $image_size * (1024 * 1024);
-        if($data['image']['size'] > $max_size) {
-            $errors['amount'] = 'Product image is to big. Use image less than 4mb';
-        }
-
 
         return $errors;
     }

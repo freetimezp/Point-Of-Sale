@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/product-edit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/product-edit.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/products.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/product-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product-edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +41,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="2AAHZCeNRg6giKmfpwyJcwDpT3a" />
   <component name="ProjectViewState">
@@ -83,7 +82,7 @@
       <workItem from="1655307875830" duration="5485000" />
       <workItem from="1655391591913" duration="4001000" />
       <workItem from="1655480467133" duration="5266000" />
-      <workItem from="1655558456006" duration="4602000" />
+      <workItem from="1655558456006" duration="6619000" />
     </task>
     <servers />
   </component>
