@@ -22,7 +22,8 @@
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/product-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product-edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/product-new.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product-new.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Model.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,6 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="2AAHZCeNRg6giKmfpwyJcwDpT3a" />
   <component name="ProjectViewState">
@@ -82,7 +82,8 @@
       <workItem from="1655307875830" duration="5485000" />
       <workItem from="1655391591913" duration="4001000" />
       <workItem from="1655480467133" duration="5266000" />
-      <workItem from="1655558456006" duration="6619000" />
+      <workItem from="1655558456006" duration="7221000" />
+      <workItem from="1655735877872" duration="2166000" />
     </task>
     <servers />
   </component>
@@ -166,5 +167,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="70" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655140899920" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/core/Model.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

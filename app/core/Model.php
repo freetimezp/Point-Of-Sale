@@ -15,6 +15,23 @@ class Model extends Database
         $db->query($query, $clean_array);
     }
 
+    public function update($id, $data) {
+        $clean_array = $this->get_allowed_columns($data);
+        $keys = array_keys($clean_array);
+
+        $query = "UPDATE $this->table SET ";
+        foreach ($keys as $column) {
+            $query .= $column . ' = :' . $column . ',';
+        }
+
+        $query = trim($query, ',');
+        $query .= " WHERE id = :id LIMIT 1";
+        $clean_array['id'] = $id;
+
+        $db = new Database();
+        $db->query($query, $clean_array);
+    }
+
     public function where($data) {
         $keys = array_keys($data);
 
