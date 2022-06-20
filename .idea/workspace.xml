@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/product-delete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/product-delete.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/product-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product-edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/product-new.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product-new.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <workItem from="1655391591913" duration="4001000" />
       <workItem from="1655480467133" duration="5266000" />
       <workItem from="1655558456006" duration="7221000" />
-      <workItem from="1655735877872" duration="2166000" />
+      <workItem from="1655735877872" duration="4950000" />
     </task>
     <servers />
   </component>
@@ -155,10 +156,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655228699540" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1655568294050">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1655747778770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655568294050" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655747778770" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1655222203416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -167,16 +168,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="70" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655140899920" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/core/Model.php</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

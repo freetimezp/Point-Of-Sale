@@ -28,7 +28,7 @@
                     <td>
                         <img class="product-image" src="<?=$product['image'];?>" alt="product">
                     </td>
-                    <td><?=esc($product['date']);?></td>
+                    <td><?=date("jS M, Y", strtotime($product['date']));?></td>
                     <td>
                         <a href="index.php?page_name=product-edit&id=<?=$product['id'];?>">
                             <button class="btn btn-sm btn-success">Edit</button>
