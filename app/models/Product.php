@@ -42,17 +42,18 @@ class Product extends Model
         if(!$id || ($id && !empty($data['image']))) {
             if(empty($data['image'])) {
                 $errors['image'] = 'Product image is required';
-            }
-            if(!($data['image']['type'] == 'image/jpeg' || $data['image']['type'] == 'image/png')) {
-                $errors['image'] = 'Only jpg or png images allowed';
-            }
-            if($data['image']['error'] > 0) {
-                $errors['image'] = 'Product image failed to upload';
-            }
-            $image_size = 4;
-            $max_size = $image_size * (1024 * 1024);
-            if($data['image']['size'] > $max_size) {
-                $errors['image'] = 'Product image is to big. Use image less than 4mb';
+            }else{
+                if(!($data['image']['type'] == 'image/jpeg' || $data['image']['type'] == 'image/png')) {
+                    $errors['image'] = 'Only jpg or png images allowed';
+                }
+                if($data['image']['error'] > 0) {
+                    $errors['image'] = 'Product image failed to upload';
+                }
+                $image_size = 4;
+                $max_size = $image_size * (1024 * 1024);
+                if($data['image']['size'] > $max_size) {
+                    $errors['image'] = 'Product image is to big. Use image less than 4mb';
+                }
             }
         }
 
