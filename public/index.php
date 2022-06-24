@@ -3,6 +3,8 @@
 session_start();
 require "../app/core/init.php";
 
+define("ABSPATH", true);
+
 $controller = 'home';
 
 if(isset($_GET['page_name'])) {

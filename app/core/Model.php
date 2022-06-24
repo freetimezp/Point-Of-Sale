@@ -40,7 +40,14 @@ class Model extends Database
         $db->query($query, $clean_array);
     }
 
-    public function where($data) {
+    public function findAll($limit = 10, $offset = 0) {
+        $query = "SELECT * FROM $this->table LIMIT $limit OFFSET $offset ";
+
+        $db = new Database();
+        return $db->query($query);
+    }
+
+    public function where($data, $limit = 10, $offset = 0) {
         $keys = array_keys($data);
 
         $query = "SELECT * FROM $this->table WHERE ";
@@ -49,6 +56,7 @@ class Model extends Database
         }
 
         $query = trim($query, 'AND ');
+        $query .= " LIMIT $limit OFFSET $offset";
 
         $db = new Database();
         return $db->query($query, $data);

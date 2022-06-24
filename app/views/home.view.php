@@ -222,6 +222,40 @@
     </div>
 </div>
 
+<script>
+    function send_data(data) {
+        let ajax = new XMLHttpRequest();
+
+        ajax.addEventListener('readystatechange', function () {
+            if(ajax.readyState == 4) {
+                if(ajax.status == 200) {
+                    handle_result(ajax.responseText);
+                }else{
+                    console.log('An error in. ' + ajax.status);
+                }
+            }
+        });
+
+        ajax.open('post', 'index.php?page_name=ajax',true);
+        ajax.send();
+    }
+
+    function handle_result(result) {
+        let obj = JSON.parse();
+
+        if(typeof obj != 'undefined') {
+            let mydiv = document.querySelector(".js-products");
+            mydiv.innerHTML = '';
+
+            for(let i = 0; i < obj.length; i++ ) {
+                mydiv.innerHTML = obj[i];
+            }
+        }
+    }
+
+    send_data();
+</script>
+
 <?php require views_path("includes/footer"); ?>
 
 
