@@ -1,5 +1,5 @@
 <?php
 
-defined(ABSPATH) ? '' : die();
+//defined(ABSPATH) ? '' : die();
 
 require views_path('home');

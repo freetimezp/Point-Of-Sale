@@ -19,55 +19,8 @@
             </div>
 
             <div class="js-products p-4 d-flex justify-content-center">
-                <div class="card rounded-2">
-                    <a href="">
-                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
-                    </a>
-                    <div class="p-4 text-center">
-                        <div class="text-muted mb-1 title">Food</div>
-                        <div class="price"><b>$5.00</b></div>
-                    </div>
-                </div>
+                <?php //add content with javascript; ?>
 
-                <div class="card rounded-2">
-                    <a href="">
-                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
-                    </a>
-                    <div class="p-4 text-center">
-                        <div class="text-muted mb-1 title">Food</div>
-                        <div class="price"><b>$5.00</b></div>
-                    </div>
-                </div>
-
-                <div class="card rounded-2">
-                    <a href="">
-                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
-                    </a>
-                    <div class="p-4 text-center">
-                        <div class="text-muted mb-1 title">Food</div>
-                        <div class="price"><b>$5.00</b></div>
-                    </div>
-                </div>
-
-                <div class="card rounded-2">
-                    <a href="">
-                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
-                    </a>
-                    <div class="p-4 text-center">
-                        <div class="text-muted mb-1 title">Food</div>
-                        <div class="price"><b>$5.00</b></div>
-                    </div>
-                </div>
-
-                <div class="card rounded-2">
-                    <a href="">
-                        <img src="assets/images/item-001.jpg" class="w-100" alt="food">
-                    </a>
-                    <div class="p-4 text-center">
-                        <div class="text-muted mb-1 title">Food</div>
-                        <div class="price"><b>$5.00</b></div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -226,31 +179,49 @@
     function send_data(data) {
         let ajax = new XMLHttpRequest();
 
-        ajax.addEventListener('readystatechange', function () {
+        ajax.addEventListener("readystatechange", function (e) {
             if(ajax.readyState == 4) {
                 if(ajax.status == 200) {
+                    //console.log(ajax);
                     handle_result(ajax.responseText);
                 }else{
-                    console.log('An error in. ' + ajax.status);
+                    console.log("Error code: " + ajax.status + " Error text: " + ajax.statusText);
                 }
             }
         });
 
-        ajax.open('post', 'index.php?page_name=ajax',true);
+        ajax.open("post", "index.php?page_name=ajax",true);
         ajax.send();
     }
 
     function handle_result(result) {
-        let obj = JSON.parse();
+        console.log(result);
 
-        if(typeof obj != 'undefined') {
-            let mydiv = document.querySelector(".js-products");
+        var obj = JSON.parse(result);
+
+        if(typeof obj != "undefined") {
+            var mydiv = document.querySelector(".js-products");
             mydiv.innerHTML = '';
 
-            for(let i = 0; i < obj.length; i++ ) {
-                mydiv.innerHTML = obj[i];
+            //console.log('here 2');
+            for(var i = 0; i < obj.length; i++ ) {
+                mydiv.innerHTML += product_html(obj[i]);
             }
         }
+    }
+
+    function product_html(data) {
+        return `
+                <div class="card rounded-2">
+                    <a href="">
+                    <img src="${data.image}" alt="food" style="width: 220px; height: 220px;">
+                    </a>
+                    <div class="p-4 text-center">
+                        <div class="text-muted mb-1 title">${data.description}</div>
+                        <div class="price"><b>$${data.amount}</b></div>
+                    </div>
+                </div>
+                `;
     }
 
     send_data();
