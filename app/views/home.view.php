@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="d-flex flex-row">
-                    <input class="border-warning" type="text" name="search" placeholder="Search" style="max-width: 200px; outline: none;">
+                    <input oninput="search_item(event)" class="border-warning js-search" type="text" name="search" placeholder="Search" style="max-width: 200px; outline: none;">
                     <span class="input-group-text bg-danger text-white shadow"><i class="fa fa-search"></i></span>
                 </div>
             </div>
@@ -55,106 +55,6 @@
                                 <i class="fa fa-trash-alt"></i>
                             </td>
                         </tr>
-
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
-
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
-
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
-
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
-
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -176,6 +76,16 @@
 </div>
 
 <script>
+    function search_item(e) {
+        let text = e.target.value.trim();
+        let data = {};
+
+        data.data_type = "search";
+        data.text = text;
+
+        send_data(data);
+    }
+
     function send_data(data) {
         let ajax = new XMLHttpRequest();
 
@@ -191,7 +101,8 @@
         });
 
         ajax.open("post", "index.php?page_name=ajax",true);
-        ajax.send();
+        data = JSON.stringify(data);
+        ajax.send(data);
     }
 
     function handle_result(result) {
@@ -224,7 +135,10 @@
                 `;
     }
 
-    send_data();
+    send_data({
+        data_type: "search",
+        text: ""
+    });
 </script>
 
 <?php require views_path("includes/footer"); ?>
