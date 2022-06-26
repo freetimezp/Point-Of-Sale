@@ -18,14 +18,14 @@
                 </div>
             </div>
 
-            <div class="js-products p-4 d-flex justify-content-center">
+            <div onclick="add_item_to_cart(event)" class="js-products p-4 d-flex justify-content-center">
                 <?php //add content with javascript; ?>
 
             </div>
         </div>
 
         <div class="col-3 p-3">
-            <h4 class="text-center">Cart <span class="badge bg-primary rounded-circle">3</span></h4>
+            <h4 class="text-center">Cart <span class="badge bg-primary rounded-circle">0</span></h4>
 
             <div class="table-responsive carts-block">
                 <table class="table table-striped table-hover carts-table">
@@ -35,26 +35,9 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr class="cart-table">
-                            <td>
-                                <img src="assets/images/item-001.jpg" alt="food">
-                            </td>
-                            <td>
-                                <div class="text-muted title p-1">Food</div>
-                                <div class="p-1 qty">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                                    <input class="input-group-text" name="qty" placeholder="3" value="3">
-                                    <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="price"><b>$5.00</b></div>
-                            </td>
-                            <td class="trash">
-                                <i class="fa fa-trash-alt"></i>
-                            </td>
-                        </tr>
+                    <tbody class="js-cart">
+                        <?php //add content with javascript; ?>
+
                     </tbody>
                 </table>
             </div>
@@ -76,6 +59,18 @@
 </div>
 
 <script>
+    let PRODUCTS = [];
+    let CART_ITEMS = [];
+
+    function add_item_to_cart(e) {
+        e.preventDefault();
+        if(e.target.tagName == "IMG") {
+            let id = e.target.getAttribute('id');
+            CART_ITEMS.push(PRODUCTS[id]);
+            console.log(CART_ITEMS);
+        }
+    }
+
     function search_item(e) {
         let text = e.target.value.trim();
         let data = {};
@@ -106,32 +101,62 @@
     }
 
     function handle_result(result) {
-        console.log(result);
+        //console.log(result);
 
         var obj = JSON.parse(result);
 
         if(typeof obj != "undefined") {
-            var mydiv = document.querySelector(".js-products");
-            mydiv.innerHTML = '';
+            if(obj.data_type == "search") {
+                var mydiv = document.querySelector(".js-products");
+                mydiv.innerHTML = '';
+                PRODUCTS = [];
 
-            //console.log('here 2');
-            for(var i = 0; i < obj.length; i++ ) {
-                mydiv.innerHTML += product_html(obj[i]);
+                if(obj.data != "") {
+                    PRODUCTS = obj.data;
+
+                    for(var i = 0; i < obj.data.length; i++ ) {
+                        mydiv.innerHTML += product_html(obj.data[i], i);
+                    }
+                }
             }
         }
     }
 
-    function product_html(data) {
+    function product_html(data, index) {
         return `
                 <div class="card rounded-2">
                     <a href="">
-                    <img src="${data.image}" alt="food" style="width: 220px; height: 220px;">
+                    <img id="${index}" src="${data.image}" alt="food" style="width: 220px; height: 220px;">
                     </a>
                     <div class="p-4 text-center">
                         <div class="text-muted mb-1 title">${data.description}</div>
                         <div class="price"><b>$${data.amount}</b></div>
                     </div>
                 </div>
+                `;
+    }
+
+    function cart_html(data) {
+        return `
+                <tr class="cart-table">
+                     <td>
+                         <img src="assets/images/item-001.jpg" alt="food">
+                     </td>
+                     <td>
+                         <div class="text-muted title p-1">food</div>
+                         <div class="p-1 qty">
+                             <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
+                             <input class="input-group-text" name="qty" placeholder="3" value="3">
+                             <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="price"><b>$5.00</b></div>
+                     </td>
+                     <td class="trash">
+                         <i class="fa fa-trash-alt"></i>
+                     </td>
+                </tr>
                 `;
     }
 

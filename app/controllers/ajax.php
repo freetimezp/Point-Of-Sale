@@ -26,7 +26,10 @@ if(!empty($row_data)) {
                     $rows[$key]['image'] = crop($row['image']);
                 }
 
-                echo json_encode($rows);
+                $info['data'] = $rows;
+                $info['data_type'] = "search";
+
+                echo json_encode($info);
             }
         }
     }
