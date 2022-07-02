@@ -25,7 +25,7 @@
         </div>
 
         <div class="col-3 p-3">
-            <h4 class="text-center">Cart <span class="badge bg-primary rounded-circle">0</span></h4>
+            <h4 class="text-center">Cart <span class="js-item-count badge bg-primary rounded-circle">0</span></h4>
 
             <div class="table-responsive carts-block">
                 <table class="table table-striped table-hover carts-table">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="alert alert-danger carts-total">
-                <span>Total: </span><span>$30.00</span>
+                <span>Total: </span><span>$<span class="js-total-amount">0.00</span></span>
             </div>
 
             <div class="carts-btns">
@@ -66,9 +66,42 @@
         e.preventDefault();
         if(e.target.tagName == "IMG") {
             let id = e.target.getAttribute('id');
-            CART_ITEMS.push(PRODUCTS[id]);
-            console.log(CART_ITEMS);
+
+            //check if item is already exists in cart
+            let found_item = false;
+            for(let i = CART_ITEMS.length - 1; i >= 0; i--) {
+                if(CART_ITEMS[i].id == PRODUCTS[id].id) {
+                    CART_ITEMS[i].qty += 1;
+                    refresh_items_display();
+                    return;
+                }
+            }
+
+            let temp = PRODUCTS[id];
+            temp.qty = 1;
+            CART_ITEMS.push(temp);
+            //console.log(CART_ITEMS);
+
+            refresh_items_display();
         }
+    }
+
+    function refresh_items_display() {
+        let item_count = document.querySelector(".js-item-count");
+        item_count.innerHTML = CART_ITEMS.length;
+
+        let items_display_div = document.querySelector(".js-cart");
+        items_display_div.innerHTML = '';
+
+        var total_amount = 0;
+
+        for(let i = CART_ITEMS.length - 1; i >= 0; i--) {
+            items_display_div.innerHTML += cart_html(CART_ITEMS[i]);
+            total_amount += (CART_ITEMS[i].amount * CART_ITEMS[i].qty);
+        }
+
+        let total_amount_div = document.querySelector(".js-total-amount");
+        total_amount_div.innerHTML = total_amount;
     }
 
     function search_item(e) {
@@ -140,18 +173,18 @@
         return `
                 <tr class="cart-table">
                      <td>
-                         <img src="assets/images/item-001.jpg" alt="food">
+                         <img src="${data.image}" alt="food">
                      </td>
                      <td>
-                         <div class="text-muted title p-1">food</div>
+                         <div class="text-muted title p-1">${data.description}</div>
                          <div class="p-1 qty">
                              <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                             <input class="input-group-text" name="qty" placeholder="3" value="3">
+                             <input class="input-group-text" name="qty" placeholder="1" value="${data.qty}">
                              <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
                          </div>
                      </td>
                      <td>
-                         <div class="price"><b>$5.00</b></div>
+                         <div class="price"><b>$${data.amount}</b></div>
                      </td>
                      <td class="trash">
                          <i class="fa fa-trash-alt"></i>
