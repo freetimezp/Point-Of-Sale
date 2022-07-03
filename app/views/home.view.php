@@ -51,7 +51,7 @@
                     <button class="btn btn-success py-3">Checkout</button>
                 </div>
                 <div>
-                    <button class="btn btn-warning">Clear all</button>
+                    <button onclick="clear_all()" class="btn btn-warning">Clear all</button>
                 </div>
             </div>
         </div>
@@ -96,12 +96,19 @@
         var total_amount = 0;
 
         for(let i = CART_ITEMS.length - 1; i >= 0; i--) {
-            items_display_div.innerHTML += cart_html(CART_ITEMS[i]);
+            items_display_div.innerHTML += cart_html(CART_ITEMS[i], i);
             total_amount += (CART_ITEMS[i].amount * CART_ITEMS[i].qty);
         }
 
         let total_amount_div = document.querySelector(".js-total-amount");
         total_amount_div.innerHTML = total_amount;
+    }
+
+    function clear_all() {
+        if(confirm("Are you sure you want to clear cart?")) {
+            CART_ITEMS = [];
+            refresh_items_display();
+        }
     }
 
     function search_item(e) {
@@ -169,7 +176,7 @@
                 `;
     }
 
-    function cart_html(data) {
+    function cart_html(data, index) {
         return `
                 <tr class="cart-table">
                      <td>
@@ -178,9 +185,9 @@
                      <td>
                          <div class="text-muted title p-1">${data.description}</div>
                          <div class="p-1 qty">
-                             <span class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
-                             <input class="input-group-text" name="qty" placeholder="1" value="${data.qty}">
-                             <span class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
+                             <span index="${index}" onclick="change_qty('down', event)" class="input-group-text bg-primary text-white"><i class="fa fa-minus"></i></span>
+                             <input onblur="change_qty('blur', event)" index="${index}" class="input-group-text" name="qty" placeholder="1" value="${data.qty}">
+                             <span index="${index}"  onclick="change_qty('up', event)" class="input-group-text bg-primary text-white"><i class="fa fa-plus"></i></span>
                          </div>
                      </td>
                      <td>
@@ -191,6 +198,26 @@
                      </td>
                 </tr>
                 `;
+    }
+
+    function change_qty(direction, e) {
+        let index = e.currentTarget.getAttribute("index");
+        //alert(index);
+
+        if(direction == "up") {
+            CART_ITEMS[index].qty += 1;
+        }else if(direction == "down"){
+            CART_ITEMS[index].qty -= 1;
+        }else if(direction == "blur") {
+            CART_ITEMS[index].qty = parseInt(e.currentTarget.value);
+        }
+
+        //make sure qty not less than 0
+        if(CART_ITEMS[index].qty < 1) {
+            CART_ITEMS[index].qty = 1;
+        }
+
+        refresh_items_display();
     }
 
     send_data({
