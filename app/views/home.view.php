@@ -193,11 +193,18 @@
                      <td>
                          <div class="price"><b>$${data.amount}</b></div>
                      </td>
-                     <td class="trash">
+                     <td index="${index}" onclick="delete_item(event)" class="trash">
                          <i class="fa fa-trash-alt"></i>
                      </td>
                 </tr>
                 `;
+    }
+
+    function delete_item(e) {
+        let index = e.currentTarget.getAttribute("index");
+        CART_ITEMS.splice(index, 1);
+
+        refresh_items_display();
     }
 
     function change_qty(direction, e) {
