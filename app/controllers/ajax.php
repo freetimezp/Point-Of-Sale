@@ -14,8 +14,9 @@ if(!empty($row_data)) {
             if(!empty($obj['text'])) {
                 //search
                 $text = "%" . $obj['text'] . "%";
-                $query = "SELECT * FROM products WHERE description LIKE :find LIMIT 10";
-                $rows = $product->query($query, ['find' => $text]);
+                $barcode = $obj['text'];
+                $query = "SELECT * FROM products WHERE description LIKE :find OR barcode = :barcode LIMIT 10";
+                $rows = $product->query($query, ['find' => $text, 'barcode' => $barcode]);
             }else{
                 //default home page products view
                 $rows = $product->findAll();

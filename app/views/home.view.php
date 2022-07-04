@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="d-flex flex-row">
-                    <input oninput="search_item(event)" class="border-warning js-search" type="text" name="search" placeholder="Search" style="max-width: 200px; outline: none;">
+                    <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" class="border-warning js-search" type="text" name="search" placeholder="Search" style="max-width: 200px; outline: none;">
                     <span class="input-group-text bg-danger text-white shadow"><i class="fa fa-search"></i></span>
                 </div>
             </div>
@@ -61,29 +61,35 @@
 <script>
     let PRODUCTS = [];
     let CART_ITEMS = [];
+    let BARCODE = false;
+
+    let main_input = document.querySelector(".js-search");
 
     function add_item_to_cart(e) {
         e.preventDefault();
         if(e.target.tagName == "IMG") {
-            let id = e.target.getAttribute('id');
+            let index = e.target.getAttribute('id');
 
             //check if item is already exists in cart
-            let found_item = false;
-            for(let i = CART_ITEMS.length - 1; i >= 0; i--) {
-                if(CART_ITEMS[i].id == PRODUCTS[id].id) {
-                    CART_ITEMS[i].qty += 1;
-                    refresh_items_display();
-                    return;
-                }
-            }
-
-            let temp = PRODUCTS[id];
-            temp.qty = 1;
-            CART_ITEMS.push(temp);
-            //console.log(CART_ITEMS);
-
-            refresh_items_display();
+            add_item_from_index(index);
         }
+    }
+
+    function add_item_from_index(index) {
+        for(let i = CART_ITEMS.length - 1; i >= 0; i--) {
+            if(CART_ITEMS[i].id == PRODUCTS[index].id) {
+                CART_ITEMS[i].qty += 1;
+                refresh_items_display();
+                return;
+            }
+        }
+
+        let temp = PRODUCTS[index];
+        temp.qty = 1;
+        CART_ITEMS.push(temp);
+        //console.log(CART_ITEMS);
+
+        refresh_items_display();
     }
 
     function refresh_items_display() {
@@ -126,12 +132,32 @@
 
         ajax.addEventListener("readystatechange", function (e) {
             if(ajax.readyState == 4) {
+                var mydiv = document.querySelector(".js-products");
+                mydiv.innerHTML = '';
+                PRODUCTS = [];
+
                 if(ajax.status == 200) {
                     //console.log(ajax);
-                    handle_result(ajax.responseText);
+                    if(ajax.responseText.trim() != "") {
+                        handle_result(ajax.responseText);
+                        if(BARCODE) {
+                            main_input.value = "";
+                            main_input.focus();
+                        }
+                    }else{
+                        if(BARCODE) {
+                            alert("That product was not found");
+                            main_input.value = "";
+                            main_input.focus();
+                        }
+                    }
                 }else{
                     console.log("Error code: " + ajax.status + " Error text: " + ajax.statusText);
                 }
+
+
+
+                BARCODE = false;
             }
         });
 
@@ -148,14 +174,16 @@
         if(typeof obj != "undefined") {
             if(obj.data_type == "search") {
                 var mydiv = document.querySelector(".js-products");
-                mydiv.innerHTML = '';
-                PRODUCTS = [];
 
                 if(obj.data != "") {
                     PRODUCTS = obj.data;
 
                     for(var i = 0; i < obj.data.length; i++ ) {
                         mydiv.innerHTML += product_html(obj.data[i], i);
+                    }
+
+                    if(BARCODE && PRODUCTS.length == 1) {
+                        add_item_from_index(0);
                     }
                 }
             }
@@ -225,6 +253,14 @@
         }
 
         refresh_items_display();
+    }
+
+    function check_for_enter_key(e) {
+        //press enter on keyboard
+        if(e.keyCode == 13) {
+            BARCODE = true;
+            search_item(e);
+        }
     }
 
     send_data({
