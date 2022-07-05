@@ -48,7 +48,7 @@
 
             <div class="carts-btns">
                 <div>
-                    <button onclick="show_amount_paid_modal()" class="btn btn-success py-3">Checkout</button>
+                    <button onclick="show_modal('amount_paid')" class="btn btn-success py-3">Checkout</button>
                 </div>
                 <div>
                     <button onclick="clear_all()" class="btn btn-warning">Clear all</button>
@@ -58,23 +58,41 @@
     </div>
 </div>
 
-<!-- Modal start -->
-<div role="close-modal"  onclick="hide_amount_paid_modal(event)" class="modal-block modal-hide js-amount-paid-modal">
+<!-- Modals start -->
+<div role="close-modal"  onclick="hide_modal(event, 'amount_paid')" class="modal-block modal-hide js-amount-paid-modal">
     <div class="modal-popup d-flex justify-content-between flex-column">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <span class="modal_title">Checkout</span>
             <span class="badge btn-danger p-2 rounded-3">
-                <i role="close-modal" onclick="hide_amount_paid_modal(event)" class="fa fa-close"></i>
+                <i role="close-modal" onclick="hide_modal(event, 'amount_paid')" class="fa fa-close"></i>
             </span>
         </div>
-        <input type="text" class="form-control mb-4" placeholder="Enter amount paid">
+        <input type="text" class="js-amount-paid-input form-control mb-4" placeholder="Enter amount paid">
         <div class="d-flex justify-content-between">
-            <button role="close-modal" onclick="hide_amount_paid_modal(event)" class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Next</button>
+            <button role="close-modal" onclick="hide_modal(event, 'amount_paid')" class="btn btn-secondary">Cancel</button>
+            <button onclick="show_modal('change_paid')" class="btn btn-primary">Next</button>
         </div>
     </div>
 </div>
-<!-- end Modal-->
+
+<div role="close-modal"  onclick="hide_modal(event, 'change_paid')" class="modal-block modal-hide-change js-change-paid-modal">
+    <div class="modal-popup d-flex justify-content-between flex-column">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="modal_title">Change back</span>
+            <span class="badge btn-danger p-2 rounded-3">
+                <i role="close-modal" onclick="hide_modal(event, 'change_paid')" class="fa fa-close"></i>
+            </span>
+        </div>
+        <div class="js-change-paid-input mb-4 text-center">
+            0.00
+        </div>
+        <div class="d-flex justify-content-between">
+            <button role="close-modal" onclick="hide_modal(event, 'change_paid')" class="btn btn-secondary">Continue</button>
+        </div>
+    </div>
+</div>
+
+<!-- end Modals-->
 
 
 <script>
@@ -282,15 +300,39 @@
         }
     }
 
-    function show_amount_paid_modal() {
-        let mydiv = document.querySelector(".js-amount-paid-modal");
-        mydiv.classList.remove("modal-hide");
-    }
+    function show_modal(modal) {
+        if(modal == "amount_paid") {
+            if(CART_ITEMS.length == 0) {
+                alert("Please, add product to cart!");
+                return;
+            }
+            let mydiv = document.querySelector(".js-amount-paid-modal");
+            mydiv.classList.remove("modal-hide");
 
-    function hide_amount_paid_modal(e) {
-        if(e.target.getAttribute("role") == "close-modal") {
+            mydiv.querySelector(".js-amount-paid-input").value = "";
+        }
+
+        if(modal == "change_paid") {
             let mydiv = document.querySelector(".js-amount-paid-modal");
             mydiv.classList.add("modal-hide");
+
+            let mychangediv = document.querySelector(".js-change-paid-modal");
+            mychangediv.classList.remove("modal-hide-change");
+
+            mychangediv.querySelector(".js-change-paid-input").value = "";
+        }
+    }
+
+    function hide_modal(e, modal) {
+        if(e.target.getAttribute("role") == "close-modal") {
+            if(modal == "amount_paid") {
+                let mydiv = document.querySelector(".js-amount-paid-modal");
+                mydiv.classList.add("modal-hide");
+            }
+            if(modal == "change_paid") {
+                let mydiv = document.querySelector(".js-change-paid-modal");
+                mydiv.classList.add("modal-hide-change");
+            }
         }
     }
 
