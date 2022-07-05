@@ -87,6 +87,7 @@ a {
 
 .modal-hide {
     display: none;
+    transition: all 0.8s ease;
 }
 
 .modal-block {
@@ -104,6 +105,28 @@ a {
     background-color: #fff;
     padding: 15px;
     margin: 100px auto 0;
+    animation: appear 1s ease;
+}
+
+.modal-popup .fa-close {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.modal-popup .modal_title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 

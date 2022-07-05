@@ -59,12 +59,17 @@
 </div>
 
 <!-- Modal start -->
-<div class="modal-block modal-hide js-amount-paid-modal">
+<div role="close-modal"  onclick="hide_amount_paid_modal(event)" class="modal-block modal-hide js-amount-paid-modal">
     <div class="modal-popup d-flex justify-content-between flex-column">
-        <h5 class="mb-4">Checkout</h5>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="modal_title">Checkout</span>
+            <span class="badge btn-danger p-2 rounded-3">
+                <i role="close-modal" onclick="hide_amount_paid_modal(event)" class="fa fa-close"></i>
+            </span>
+        </div>
         <input type="text" class="form-control mb-4" placeholder="Enter amount paid">
         <div class="d-flex justify-content-between">
-            <button onclick="hide_amount_paid_modal()" class="btn btn-secondary">Cancel</button>
+            <button role="close-modal" onclick="hide_amount_paid_modal(event)" class="btn btn-secondary">Cancel</button>
             <button class="btn btn-primary">Next</button>
         </div>
     </div>
@@ -282,9 +287,11 @@
         mydiv.classList.remove("modal-hide");
     }
 
-    function hide_amount_paid_modal() {
-        let mydiv = document.querySelector(".js-amount-paid-modal");
-        mydiv.classList.add("modal-hide");
+    function hide_amount_paid_modal(e) {
+        if(e.target.getAttribute("role") == "close-modal") {
+            let mydiv = document.querySelector(".js-amount-paid-modal");
+            mydiv.classList.add("modal-hide");
+        }
     }
 
     send_data({
