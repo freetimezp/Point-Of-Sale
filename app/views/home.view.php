@@ -355,10 +355,20 @@
 
         show_modal('change_paid');
 
+        //remove unwanted information from products items
+        let ITEMS_NEW = [];
+        for(let i = 0; i < CART_ITEMS.length; i++) {
+            let tmp = {};
+            tmp.id = CART_ITEMS[i]['id'];
+            tmp.qty = CART_ITEMS[i]['qty'];
+
+            ITEMS_NEW.push(tmp);
+        }
+
         //send cart data through ajax
         send_data({
             data_type: "checkout",
-            text: CART_ITEMS
+            text: ITEMS_NEW
         });
 
         //clear items in cart

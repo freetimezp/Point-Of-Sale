@@ -32,6 +32,48 @@ if(!empty($row_data)) {
 
                 echo json_encode($info);
             }
+        }elseif($obj['data_type'] == 'checkout') {
+            $data = $obj['text'];
+
+            //collect data to save
+            $receipt_no = get_receipt_no();
+            $user_id = auth('id');
+            $date = date("Y-m-d H:i:s");
+
+            //read from db
+            $db = new Database();
+            foreach ($data as $row) {
+                $arr = [];
+
+                $arr['id'] = $row['id'];
+                $query = "SELECT * FROM products WHERE id = :id LIMIT 1";
+                $check = $db->query($query, $arr);
+
+                if(is_array($check)) {
+                    $check = $check[0];
+                    //save to db
+                    $arr = [];
+                    $arr['barcode'] = $check['barcode'];
+                    $arr['receipt_no'] = $receipt_no;
+                    $arr['description'] = $check['description'];
+                    $arr['qty'] = $row['qty'];
+                    $arr['amount'] = $check['amount'];
+                    $arr['total'] = $row['qty'] * $check['amount'];
+                    $arr['date'] = $date;
+                    $arr['user_id'] = $user_id;
+
+                    $query = "INSERT INTO sales (barcode, receipt_no, description, qty, amount, total, date, user_id)
+                                VALUES(:barcode, :receipt_no, :description, :qty, :amount, :total, :date, :user_id)";
+                    $db->query($query, $arr);
+                }
+            }
+
+
+            $info['data_type'] = "checkout";
+            $info['data'] = "Items saved successfully!";
+
+
+            echo json_encode($info);
         }
     }
 }
