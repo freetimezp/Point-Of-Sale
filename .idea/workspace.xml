@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/models/Auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +100,7 @@
       <workItem from="1657032312760" duration="7973000" />
       <workItem from="1657118462973" duration="7716000" />
       <workItem from="1657292667169" duration="5926000" />
+      <workItem from="1657640659792" duration="2416000" />
     </task>
     <servers />
   </component>
@@ -189,10 +188,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655228699540" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1656092009831">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1657643674273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1656092009831" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1657643674273" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1655827182580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
