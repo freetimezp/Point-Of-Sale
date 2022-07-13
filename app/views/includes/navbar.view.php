@@ -9,26 +9,36 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?page_name=home">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?page_name=admin">Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?page_name=login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?page_name=signup">Signup</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <?=!empty($_SESSION['USER'])?auth('username'):'Hi,User';?>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="index.php?page_name=profile">Profile</a></li>
-                        <li><a class="dropdown-item" href="index.php?page_name=page-settings">Profile settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.php?page_name=logout">Logout</a></li>
-                    </ul>
-                </li>
+
+                <?php if(Auth::access('supervisor')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page_name=admin">Admin</a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if(Auth::access('admin')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page_name=signup">Create user</a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if(!Auth::logged_in()): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page_name=login">Login</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span><?=auth('username');?></span><span>(<?=Auth::get('role');?>)</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="index.php?page_name=profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="index.php?page_name=page-settings">Profile settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.php?page_name=logout">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -10,7 +10,7 @@ class Auth
         return 'Hi, User';
     }
 
-    public static function lpgged_in() {
+    public static function logged_in() {
         if(!empty($_SESSION['USER'])) {
             $db = new Database();
             if($db->query("SELECT * FROM users WHERE email = :email LIMIT 1", ['email' => $_SESSION['USER']['email']])) {
