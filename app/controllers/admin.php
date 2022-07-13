@@ -8,4 +8,10 @@ if($tab == 'products') {
     $products = $product->query("SELECT * FROM products ORDER BY id DESC");
 }
 
-require views_path('admin/admin');
+if(Auth::access('supervisor')) {
+    require views_path('admin/admin');
+}else{
+    Auth::setMessage('You dont have permissions to this part!');
+    require views_path('auth/denied');
+}
+
