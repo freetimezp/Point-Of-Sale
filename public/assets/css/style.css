@@ -122,6 +122,11 @@ a {
     font-size: 50px;
 }
 
+.user-image {
+    width: 80px;
+    height: 80px;
+}
+
 @keyframes appear {
     0% {
         opacity: 0;

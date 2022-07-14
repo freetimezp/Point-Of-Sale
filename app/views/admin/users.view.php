@@ -2,6 +2,7 @@
     <table class="table table-striped table-hover">
         <tr>
             <th>Username</th>
+            <th>Gender</th>
             <th>Email</th>
             <th>Role</th>
             <th>Image</th>
@@ -21,10 +22,13 @@
                             <?=esc($user['username']);?>
                         </a>
                     </td>
+                    <td><?=esc($user['gender']);?></td>
                     <td><?=esc($user['email']);?></td>
                     <td><?=esc($user['role']);?></td>
                     <td>
-                        <img class="user-image" src="<?=crop($user['image']);?>" alt="user">
+                        <a href="index.php?page_name=profile&id=<?=$user['id'];?>">
+                            <img class="user-image" src="<?=crop($user['image'], 600, $user['gender']);?>" alt="user">
+                        </a>
                     </td>
                     <td><?=date("jS M, Y", strtotime($user['date']));?></td>
                     <td>

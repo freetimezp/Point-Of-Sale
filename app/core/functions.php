@@ -43,15 +43,28 @@ function auth($column) {
     return 'Hi, User';
 }
 
-function crop($filename, $size = 600) {
+function crop($filename, $size = 600, $type = 'product') {
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     //use this
     //$cropped_file = str_replace('.' . $ext, '_cropped.' . $ext, $filename);
     //or
     $cropped_file = preg_replace("/\.$ext$/", '_cropped.' . $ext, $filename);
 
+    //if cropped file already exists
     if(file_exists($cropped_file)) {
         return $cropped_file;
+    }
+
+    //if file to be cropped does not exist
+    if(!file_exists($filename)) {
+        if($type == 'male') {
+            return 'assets/images/male.png';
+        }elseif($type == 'female') {
+            return 'assets/images/female.png';
+        }else{
+            return 'assets/images/no_image.jpg';
+        }
+
     }
 
     //create image resource
