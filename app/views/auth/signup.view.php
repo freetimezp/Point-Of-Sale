@@ -38,7 +38,10 @@
 
         <div>
             <button class="btn btn-primary">Create</button>
-            <button class="btn btn-secondary">Cancel</button>
+
+            <a href="index.php?page_name=admin&tab=users">
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </a>
         </div>
     </form>
 </div>

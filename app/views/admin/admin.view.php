@@ -26,6 +26,12 @@
                     <span> Products</span>
                 </li>
             </a>
+            <a href="index.php?page_name=admin&tab=sales">
+                <li class="list-group-item  <?=$tab=='sales'?'active':'';?>">
+                    <i class="fa fa-salesforce" style="min-width: 20px;"></i>
+                    <span> Sales</span>
+                </li>
+            </a>
             <a href="index.php?page_name=logout">
                 <li class="list-group-item">
                     <i class="fa fa-sign-out" style="min-width: 20px;"></i>
@@ -45,7 +51,11 @@
                         break;
 
                     case 'users':
+                        require views_path("admin/users");
+                        break;
 
+                    case 'sales':
+                        require views_path("admin/sales");
                         break;
 
                     default:
