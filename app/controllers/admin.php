@@ -13,8 +13,8 @@ if($tab == 'users') {
 }
 
 if($tab == 'sales') {
-    $user = new User();
-    $users = $user->query("SELECT * FROM users ORDER BY id DESC");
+    $sale = new Sales();
+    $sales = $sale->query("SELECT * FROM sales ORDER BY id DESC");
 }
 
 if(Auth::access('supervisor')) {

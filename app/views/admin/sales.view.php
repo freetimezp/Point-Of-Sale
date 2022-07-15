@@ -2,38 +2,36 @@
     <table class="table table-striped table-hover">
         <tr>
             <th>Barcode</th>
+            <th>Receipt_no</th>
             <th>Product</th>
             <th>Qty</th>
             <th>Price</th>
-            <th>Image</th>
+            <th>Total</th>
             <th>Date</th>
+            <th>Cashier</th>
             <th>
-                <a href="index.php?page_name=product-new">
+                <a href="index.php?page_name=home">
                     <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add new</button>
                 </a>
             </th>
         </tr>
 
-        <?php if (!empty($products)): ?>
-            <?php foreach ($products as $product): ?>
+        <?php if (!empty($sales)): ?>
+            <?php foreach ($sales as $sale): ?>
                 <tr>
-                    <td><?=esc($product['barcode']);?></td>
+                    <td><?=esc($sale['barcode']);?></td>
+                    <td><?=esc($sale['receipt_no']);?></td>
+                    <td><?=esc($sale['description']);?></td>
+                    <td><?=esc($sale['qty']);?></td>
+                    <td><?=esc($sale['amount']);?></td>
+                    <td><?=esc($sale['total']);?></td>
+                    <td><?=date("jS M, Y", strtotime($sale['date']));?></td>
+                    <td><?=esc($sale['user_id']);?></td>
                     <td>
-                        <a href="index.php?page_name=product-single&id=<?=$product['id'];?>">
-                            <?=esc($product['description']);?>
-                        </a>
-                    </td>
-                    <td><?=esc($product['qty']);?></td>
-                    <td><?=esc($product['amount']);?></td>
-                    <td>
-                        <img class="product-image" src="<?=crop($product['image']);?>" alt="product">
-                    </td>
-                    <td><?=date("jS M, Y", strtotime($product['date']));?></td>
-                    <td>
-                        <a href="index.php?page_name=product-edit&id=<?=$product['id'];?>">
+                        <a href="index.php?page_name=product-edit&id=<?=$sale['id'];?>">
                             <button class="btn btn-sm btn-success">Edit</button>
                         </a>
-                        <a href="index.php?page_name=product-delete&id=<?=$product['id'];?>">
+                        <a href="index.php?page_name=product-delete&id=<?=$sale['id'];?>">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </a>
                     </td>

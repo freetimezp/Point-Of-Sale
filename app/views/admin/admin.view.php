@@ -28,7 +28,7 @@
             </a>
             <a href="index.php?page_name=admin&tab=sales">
                 <li class="list-group-item  <?=$tab=='sales'?'active':'';?>">
-                    <i class="fa fa-salesforce" style="min-width: 20px;"></i>
+                    <i class="fa fa-money-bill-wave" style="min-width: 20px;"></i>
                     <span> Sales</span>
                 </li>
             </a>
