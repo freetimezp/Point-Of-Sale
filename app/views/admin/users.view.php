@@ -32,10 +32,10 @@
                     </td>
                     <td><?=date("jS M, Y", strtotime($user['date']));?></td>
                     <td>
-                        <a href="index.php?page_name=user-edit&id=<?=$user['id'];?>">
+                        <a href="index.php?page_name=edit-user&id=<?=$user['id'];?>">
                             <button class="btn btn-sm btn-success">Edit</button>
                         </a>
-                        <a href="index.php?page_name=user-delete&id=<?=$user['id'];?>">
+                        <a href="index.php?page_name=delete-user&id=<?=$user['id'];?>">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </a>
                     </td>

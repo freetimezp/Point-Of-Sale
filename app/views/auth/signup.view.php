@@ -1,7 +1,7 @@
 <?php require views_path("includes/header"); ?>
 
 <div class="container text-center border col-lg-4 col-md-8 mt-4 p-4">
-    <h3><i class="fa fa-user pe-2"></i>User signup</h3>
+    <h3><i class="fa fa-user pe-2"></i>Create User</h3>
     <h5 class="mb-5"><?=APP_NAME;?></h5>
 
     <?php if($errors): ?>
