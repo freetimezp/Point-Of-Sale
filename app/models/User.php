@@ -19,7 +19,7 @@ class User extends Model
         if(empty($data['username'])) {
             $errors['username'] = 'Username is required';
         }
-        if(!preg_match('/[a-zA-Z ]/', $data['username'])) {
+        if(!preg_match('/^[a-zA-Z ]+$/', $data['username'])) {
             $errors['username'] = 'Only letters and spaces allowed in username';
         }
 

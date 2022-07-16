@@ -21,7 +21,7 @@ class Sales extends Model
         if(empty($data['description'])) {
             $errors['description'] = 'Product description is required';
         }
-        if(!preg_match('/[a-zA-Z0-9 ]+/', $data['description'])) {
+        if(!preg_match('/^[a-zA-Z0-9 ]+$/', $data['description'])) {
             $errors['description'] = 'Only letters, numbers and spaces allowed in description';
         }
 
