@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/edit-user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/auth/edit-user.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/users.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/users.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/auth/signup.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/signup.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/edit-user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9003" />
+  <component name="PhpDebugGeneral" xdebug_debug_port="9003" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="eec23330-ea21-43e1-a66a-24c021638b7b" name="127.0.0.1" />
@@ -108,6 +105,7 @@
       <workItem from="1657728349664" duration="3934000" />
       <workItem from="1657811673841" duration="3847000" />
       <workItem from="1657905789009" duration="4425000" />
+      <workItem from="1657983293728" duration="2249000" />
     </task>
     <servers />
   </component>
@@ -211,5 +209,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1657041592866" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/controllers/edit-user.php</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

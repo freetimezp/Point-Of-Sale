@@ -8,16 +8,24 @@ $row = $user->first(['id' => $id]);
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_POST['role'] = 'user';
-    $_POST['date'] = date("Y-m-d H:i:s");
+    if($_POST['role'] == 'admin') {
+        if(!Auth::get('role') == 'admin') {
+            $_POST['role'] = 'user';
+        }
+    }
 
-    $errors = $user->validate($_POST);
+    $errors = $user->validate($_POST, $id);
 
     if(empty($errors)) {
-        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $user->insert($_POST);
+        if(empty($_POST['password'])) {
+            unset($_POST['password']);
+        }else{
+            $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        }
 
-        redirect('login');
+        $user->update($id, $_POST);
+
+        redirect('admin&tab=users');
     }
 }
 
