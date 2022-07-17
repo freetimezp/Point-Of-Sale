@@ -1,4 +1,14 @@
-<div>
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Table view</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Graph view</a>
+    </li>
+</ul>
+
+<div class="table-responsive">
+    <h3>Today total sales: $<?=$sales_total;?></h3>
     <table class="table table-striped table-hover">
         <tr>
             <th>Barcode</th>

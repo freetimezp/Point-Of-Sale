@@ -15,6 +15,19 @@ if($tab == 'users') {
 if($tab == 'sales') {
     $sale = new Sales();
     $sales = $sale->query("SELECT * FROM sales ORDER BY id DESC");
+
+    //get today sales
+    $year = date("Y");
+    $month = date("m");
+    $day = date("d");
+    $query = "SELECT sum(total) as total FROM sales WHERE day(date) = $day AND month(date) = $month AND year(date) = $year";
+    $st = $sale->query($query);
+    $sales_total = 0;
+
+    if($st) {
+        $sales_total = $st[0]['total'] ?? 0;
+    }
+
 }
 
 if(Auth::access('supervisor')) {

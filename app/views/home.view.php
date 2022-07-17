@@ -193,8 +193,6 @@
                     console.log("Error code: " + ajax.status + " Error text: " + ajax.statusText);
                 }
 
-
-
                 BARCODE = false;
             }
         });
@@ -341,7 +339,7 @@
         e.preventDefault();
         let amount = document.querySelector(".js-amount-paid-input").value.trim();
 
-        if(amount < GTOTAL || amount == "") {
+        if(amount < GTOTAL || amount == 0) {
             alert("Amount be higher or equal to total amount!");
             return;
         }
