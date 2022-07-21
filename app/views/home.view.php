@@ -372,6 +372,12 @@
         //clear items in cart
         CART_ITEMS = [];
         refresh_items_display();
+
+        //reload products on main page
+        send_data({
+            data_type: "search",
+            text: ""
+        });
     }
 
     send_data({

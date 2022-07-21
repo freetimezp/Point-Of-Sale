@@ -10,16 +10,17 @@ if(!empty($row_data)) {
     if(is_array($obj)) {
         if($obj['data_type'] == 'search') {
             $product = new Product();
+            $limit = 20;
 
             if(!empty($obj['text'])) {
                 //search
                 $text = "%" . $obj['text'] . "%";
                 $barcode = $obj['text'];
-                $query = "SELECT * FROM products WHERE description LIKE :find OR barcode = :barcode LIMIT 10";
+                $query = "SELECT * FROM products WHERE description LIKE :find OR barcode = :barcode ORDER BY views DESC LIMIT $limit";
                 $rows = $product->query($query, ['find' => $text, 'barcode' => $barcode]);
             }else{
                 //default home page products view
-                $rows = $product->findAll();
+                $rows = $product->findAll($limit, 0, 'DESC', ' views ');
             }
 
             if($rows) {
@@ -65,13 +66,15 @@ if(!empty($row_data)) {
                     $query = "INSERT INTO sales (barcode, receipt_no, description, qty, amount, total, date, user_id)
                                 VALUES(:barcode, :receipt_no, :description, :qty, :amount, :total, :date, :user_id)";
                     $db->query($query, $arr);
+
+                    //add view count for product
+                    $query = "UPDATE products SET views = views + 1 WHERE id = :id LIMIT 1";
+                    $db->query($query, ['id' => $check['id']]);
                 }
             }
 
-
             $info['data_type'] = "checkout";
             $info['data'] = "Items saved successfully!";
-
 
             echo json_encode($info);
         }
