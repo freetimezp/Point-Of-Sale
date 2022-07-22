@@ -8,13 +8,22 @@ if($tab == 'products') {
 }
 
 if($tab == 'users') {
+    $limit = 1;
+    $pager = new Pager($limit);
+    $offset = $pager->offset;
+
     $user = new User();
-    $users = $user->query("SELECT * FROM users ORDER BY id DESC");
+    $users = $user->query("SELECT * FROM users ORDER BY id DESC LIMIT $limit OFFSET $offset");
 }
 
 if($tab == 'sales') {
     $sale = new Sales();
-    $sales = $sale->query("SELECT * FROM sales ORDER BY id DESC");
+
+    $limit = 2;
+    $pager = new Pager($limit);
+    $offset = $pager->offset;
+
+    $sales = $sale->query("SELECT * FROM sales ORDER BY id DESC LIMIT $limit OFFSET $offset");
 
     //get today sales
     $year = date("Y");

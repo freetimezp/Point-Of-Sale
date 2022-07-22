@@ -42,6 +42,9 @@
                 </tr>
             <?php endforeach; ?>
         <?php endif; ?>
-
     </table>
+
+    <hr>
+
+    <?php $pager->display(); ?>
 </div>

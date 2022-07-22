@@ -50,4 +50,9 @@
         <?php endif; ?>
 
     </table>
+
+    <hr>
+
+    <?php $pager->display(); ?>
+
 </div>
