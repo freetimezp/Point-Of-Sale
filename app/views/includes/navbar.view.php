@@ -32,8 +32,8 @@
                             <span><?=auth('username');?></span><span>(<?=Auth::get('role');?>)</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?page_name=profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="index.php?page_name=page-settings">Profile settings</a></li>
+                            <li><a class="dropdown-item" href="index.php?page_name=profile&id=<?=Auth::get('id');?>">Profile</a></li>
+                            <li><a class="dropdown-item" href="index.php?page_name=edit-user&id=<?=Auth::get('id');?>">Profile settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="index.php?page_name=logout">Logout</a></li>
                         </ul>
