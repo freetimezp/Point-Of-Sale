@@ -46,5 +46,5 @@
 
     <hr>
 
-    <?php $pager->display(); ?>
+    <?php $pager->display(count($users)); ?>
 </div>

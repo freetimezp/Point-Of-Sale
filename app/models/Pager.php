@@ -6,6 +6,7 @@ class Pager
 {
     protected $limit = 10;
     public $offset = 0;
+    public $steps = 2;
 
     public function __construct($limit = 10) {
         $this->limit = (int)$limit;
@@ -46,7 +47,14 @@ class Pager
         return $url;
     }
 
-    public function display() {
+    public function display($rec_count = null) {
+        if(!$rec_count) {
+            $rec_count = $this->limit;
+        }
+        if($rec_count < $this->limit) {
+            return;
+        }
+        $page_number = $this->get_page_number();
     ?>
             <div>
                 <nav aria-label="...">
@@ -55,17 +63,37 @@ class Pager
                             <a class="page-link" href="<?=$this->create_page_link(1);?>">First</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="<?=$this->create_page_link(($this->get_page_number() - 1) < 1 ? 1 : $this->get_page_number() - 1);?>">Prev</a>
+                            <a class="page-link" href="<?=$this->create_page_link(($page_number - 1) < 1 ? 1 : $page_number - 1);?>">Prev</a>
                         </li>
+
+                        <?php
+                            for($i = $this->steps; $i > 0; $i--) {
+                                if(($page_number - $i) > 0) {
+                                    echo '
+                                    <li class="page-item">
+                                        <a class="page-link" href="' . $this->create_page_link($page_number - $i) . '">' . $page_number - $i . '</a>
+                                    </li>
+                                    ';
+                                }
+                            }
+                        ?>
+
+                        <li class="page-item active">
+                            <a class="page-link" href="<?=$this->create_page_link($page_number);?>"><?=$page_number;?></a>
+                        </li>
+
+                        <?php
+                            for ($i = 1; $i <= $this->steps; $i++) {
+                                echo '
+                                        <li class="page-item">
+                                            <a class="page-link" href="' . $this->create_page_link($page_number + $i) . '">' . $page_number + $i . '</a>
+                                        </li>
+                                    ';
+                            }
+                        ?>
+
                         <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="<?=$this->create_page_link($this->get_page_number() + 1);?>">Next</a>
+                            <a class="page-link" href="<?=$this->create_page_link($page_number + 1);?>">Next</a>
                         </li>
                     </ul>
                 </nav>

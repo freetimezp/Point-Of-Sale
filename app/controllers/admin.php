@@ -8,7 +8,7 @@ if($tab == 'products') {
 }
 
 if($tab == 'users') {
-    $limit = 1;
+    $limit = 10;
     $pager = new Pager($limit);
     $offset = $pager->offset;
 
