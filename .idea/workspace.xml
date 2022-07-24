@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa2529f-eac3-4ec0-a672-6cf6ceb8e158" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/auth/profile.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/includes/navbar.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/navbar.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/edit-user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/auth/edit-user.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/edit-user.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/auth/signup.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/signup.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +112,7 @@
       <workItem from="1658410281642" duration="4061000" />
       <workItem from="1658500538365" duration="6694000" />
       <workItem from="1658573355803" duration="7246000" />
+      <workItem from="1658658253372" duration="3619000" />
     </task>
     <servers />
   </component>

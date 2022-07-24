@@ -28,6 +28,14 @@
             >
         </div>
         <div class="input-group mb-4">
+            <span class="input-group-text" style="min-width: 100px;">Gender</span>
+            <select name="gender" class="form-control  <?=!empty($errors['gender'])?'border-danger':'';?>">
+                <option>Choose gender</option>
+                <option>male</option>
+                <option>female</option>
+            </select>
+        </div>
+        <div class="input-group mb-4">
             <span class="input-group-text" style="min-width: 100px;">Password</span>
             <input type="text" name="password" class="form-control  <?=!empty($errors['password'])?'border-danger':'';?>" placeholder="Type your password" aria-label="Password">
         </div>

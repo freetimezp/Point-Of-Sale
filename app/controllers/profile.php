@@ -29,10 +29,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-if(Auth::access('admin')) {
+if(Auth::access('admin') || ($row && Auth::get('id') == $row['id'])) {
     require views_path('auth/profile');
 }else{
-    Auth::setMessage('Only admin can create a user!');
+    Auth::setMessage('Only admin or owner can create a user!');
     require views_path('auth/denied');
 }
 

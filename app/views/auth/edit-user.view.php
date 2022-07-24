@@ -40,7 +40,9 @@
                 <span class="input-group-text" style="min-width: 100px;">Role</span>
                 <select name="role" class="form-control  <?=!empty($errors['role'])?'border-danger':'';?>">
                     <option><?=$row['role'];?></option>
-                    <option>admin</option>
+                    <?php if(Auth::get('role') == 'admin'): ?>
+                        <option>admin</option>
+                    <?php endif; ?>
                     <option>supervisor</option>
                     <option>cashier</option>
                     <option>user</option>
@@ -58,9 +60,16 @@
             <div>
                 <button class="btn btn-primary">Save</button>
 
-                <a href="index.php?page_name=admin&tab=users">
-                    <button type="button" class="btn btn-secondary">Cancel</button>
-                </a>
+                <?php if(Auth::get('role') == 'admin'): ?>
+                    <a href="index.php?page_name=admin&tab=users">
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </a>
+                <?php else: ?>
+                    <a href="index.php?page_name=profile&id=<?=Auth::get('id');?>">
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </a>
+                <?php endif; ?>
+
             </div>
         </form>
     <?php else: ?>
