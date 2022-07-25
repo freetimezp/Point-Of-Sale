@@ -150,7 +150,12 @@ function get_receipt_no() {
 
 function get_date($date) {
     return date("jS M, Y", strtotime($date));
+}
 
+function get_user_by_id($id) {
+    $user = new User();
+
+    return $user->first(['id' => $id]);
 }
 
 

@@ -18,11 +18,13 @@ class Sales extends Model
     public function validate($data, $id = null) {
         $errors = [];
 
-        if(empty($data['description'])) {
-            $errors['description'] = 'Product description is required';
-        }
-        if(!preg_match('/^[a-zA-Z0-9 ]+$/', $data['description'])) {
-            $errors['description'] = 'Only letters, numbers and spaces allowed in description';
+        if(!$id) {
+            if(empty($data['description'])) {
+                $errors['description'] = 'Product description is required';
+            }
+            if(!preg_match('/^[a-zA-Z0-9 ]+$/', $data['description'])) {
+                $errors['description'] = 'Only letters, numbers and spaces allowed in description';
+            }
         }
 
         if(empty($data['qty'])) {

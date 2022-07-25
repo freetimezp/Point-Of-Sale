@@ -36,12 +36,26 @@
                     <td><?=esc($sale['amount']);?></td>
                     <td><?=esc($sale['total']);?></td>
                     <td><?=date("jS M, Y", strtotime($sale['date']));?></td>
-                    <td><?=esc($sale['user_id']);?></td>
+                    <?php
+                        $cashier = get_user_by_id($sale['user_id']);
+                        if(empty($cashier)) {
+                            $name = "UNKNOWN";
+                            $namelink = "#";
+                        }else{
+                            $name = $cashier['username'];
+                            $namelink = "index.php?page_name=profile&id=" . $cashier['id'];
+                        }
+                    ?>
                     <td>
-                        <a href="index.php?page_name=product-edit&id=<?=$sale['id'];?>">
+                        <a href="<?=$namelink;?>">
+                            <?=esc($name);?>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?page_name=sales-edit&id=<?=$sale['id'];?>">
                             <button class="btn btn-sm btn-success">Edit</button>
                         </a>
-                        <a href="index.php?page_name=product-delete&id=<?=$sale['id'];?>">
+                        <a href="index.php?page_name=sales-delete&id=<?=$sale['id'];?>">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </a>
                     </td>
