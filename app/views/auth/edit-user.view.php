@@ -11,7 +11,12 @@
     <?php endif; ?>
 
     <?php if(is_array($row)): ?>
-        <form action="" method="post">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-5">
+                <img class="w-100" src="<?=$row['image'];?>" alt="user-photo">
+                <input type="file" name="image" class="form-control" placeholder="User image">
+            </div>
+
             <div class="input-group mb-4">
                 <span class="input-group-text" style="min-width: 100px;">Username</span>
                 <input  type="text" name="username"
