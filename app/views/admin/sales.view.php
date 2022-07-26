@@ -1,72 +1,99 @@
 <ul class="nav nav-tabs mb-3">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Table view</a>
+        <a class="nav-link <?=($section == 'table')?'active':'';?>" href="index.php?page_name=admin&tab=sales">Table view</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Graph view</a>
+        <a class="nav-link <?=($section == 'graph')?'active':'';?>" href="index.php?page_name=admin&tab=sales&s=graph">Graph view</a>
     </li>
 </ul>
 
-<div class="table-responsive">
-    <h3>Today total sales: $<?=$sales_total;?></h3>
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>Barcode</th>
-            <th>Receipt_no</th>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Date</th>
-            <th>Cashier</th>
-            <th>
-                <a href="index.php?page_name=home">
-                    <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add new</button>
-                </a>
-            </th>
-        </tr>
+<?php if($section == 'table'): ?>
+    <div class="text-center">
+        <form class="p-3">
+            <div class="col-12 mb-3">
+                <label for="start" style="min-width: 40px;">From:</label>
+                <input type="date" id="start" name="start"  class="ms-2 p-1 text-primary border-primary rounded-3"
+                       value="<?=!empty($_GET['start'])?$_GET['start']:'';?>"
+                >
+            </div>
+            <div class="col-12 mb-3">
+                <label for="end" style="min-width: 40px;">To:</label>
+                <input type="date" id="end" name="end"  class="ms-2 p-1 text-primary border-primary rounded-3"
+                       value="<?=!empty($_GET['end'])?$_GET['end']:'';?>"
+                >
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary">CHOOSE</button>
+                <input type="hidden" name="page_name" value="admin">
+                <input type="hidden" name="tab" value="sales">
+            </div>
+        </form>
+    </div>
 
-        <?php if (!empty($sales)): ?>
-            <?php foreach ($sales as $sale): ?>
-                <tr>
-                    <td><?=esc($sale['barcode']);?></td>
-                    <td><?=esc($sale['receipt_no']);?></td>
-                    <td><?=esc($sale['description']);?></td>
-                    <td><?=esc($sale['qty']);?></td>
-                    <td><?=esc($sale['amount']);?></td>
-                    <td><?=esc($sale['total']);?></td>
-                    <td><?=date("jS M, Y", strtotime($sale['date']));?></td>
-                    <?php
-                        $cashier = get_user_by_id($sale['user_id']);
-                        if(empty($cashier)) {
-                            $name = "UNKNOWN";
-                            $namelink = "#";
-                        }else{
-                            $name = $cashier['username'];
-                            $namelink = "index.php?page_name=profile&id=" . $cashier['id'];
-                        }
-                    ?>
-                    <td>
-                        <a href="<?=$namelink;?>">
-                            <?=esc($name);?>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="index.php?page_name=sales-edit&id=<?=$sale['id'];?>">
-                            <button class="btn btn-sm btn-success">Edit</button>
-                        </a>
-                        <a href="index.php?page_name=sales-delete&id=<?=$sale['id'];?>">
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
 
-    </table>
+    <div class="table-responsive">
+        <h3>Today total sales: $<?=$sales_total;?></h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Barcode</th>
+                <th>Receipt_no</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Cashier</th>
+                <th>
+                    <a href="index.php?page_name=home">
+                        <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add new</button>
+                    </a>
+                </th>
+            </tr>
 
-    <hr>
+            <?php if (!empty($sales)): ?>
+                <?php foreach ($sales as $sale): ?>
+                    <tr>
+                        <td><?=esc($sale['barcode']);?></td>
+                        <td><?=esc($sale['receipt_no']);?></td>
+                        <td><?=esc($sale['description']);?></td>
+                        <td><?=esc($sale['qty']);?></td>
+                        <td><?=esc($sale['amount']);?></td>
+                        <td><?=esc($sale['total']);?></td>
+                        <td><?=date("jS M, Y", strtotime($sale['date']));?></td>
+                        <?php
+                            $cashier = get_user_by_id($sale['user_id']);
+                            if(empty($cashier)) {
+                                $name = "UNKNOWN";
+                                $namelink = "#";
+                            }else{
+                                $name = $cashier['username'];
+                                $namelink = "index.php?page_name=profile&id=" . $cashier['id'];
+                            }
+                        ?>
+                        <td>
+                            <a href="<?=$namelink;?>">
+                                <?=esc($name);?>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="index.php?page_name=sales-edit&id=<?=$sale['id'];?>">
+                                <button class="btn btn-sm btn-success">Edit</button>
+                            </a>
+                            <a href="index.php?page_name=sales-delete&id=<?=$sale['id'];?>">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
 
-    <?php $pager->display(); ?>
+        <hr>
 
-</div>
+        <?php $pager->display(); ?>
+    </div>
+<?php else: ?>
+    <div>
+        <h3>GRAPH view</h3>
+    </div>
+<?php endif; ?>

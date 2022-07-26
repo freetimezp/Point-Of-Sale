@@ -1,6 +1,6 @@
 <?php
 
-$tab = isset($_GET['tab']) ? $_GET['tab'] : '';
+$tab = isset($_GET['tab']) ? $_GET['tab'] : 'dashboard';
 
 if($tab == 'products') {
     $product = new Product();
@@ -17,13 +17,32 @@ if($tab == 'users') {
 }
 
 if($tab == 'sales') {
+    $section = isset($_GET['s']) ? $_GET['s'] : 'table';
+    $startdate = $_GET['start'] ?? null;
+    $enddate = $_GET['end'] ?? null;
+
     $sale = new Sales();
 
-    $limit = 2;
+    $limit = 20;
     $pager = new Pager($limit);
     $offset = $pager->offset;
 
-    $sales = $sale->query("SELECT * FROM sales ORDER BY id DESC LIMIT $limit OFFSET $offset");
+    $query = "SELECT * FROM sales ORDER BY id DESC LIMIT $limit OFFSET $offset";
+
+    if($startdate) {
+        $syear = date("Y", strtotime($startdate));
+        $smonth = date("m", strtotime($startdate));
+        $sday = date("d", strtotime($startdate));
+
+        $eyear = date("Y", strtotime($enddate));
+        $emonth = date("m", strtotime($enddate));
+        $eday = date("d", strtotime($enddate));
+
+        $query = "SELECT * FROM sales WHERE year(date) = '$syear' AND month(date) = '$smonth' AND day(date) = '$sday' 
+                    ORDER BY id DESC LIMIT $limit OFFSET $offset";
+    }
+
+    $sales = $sale->query($query);
 
     //get today sales
     $year = date("Y");
