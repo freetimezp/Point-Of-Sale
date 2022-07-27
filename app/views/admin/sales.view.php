@@ -10,19 +10,30 @@
 <?php if($section == 'table'): ?>
     <div class="text-center">
         <form class="p-3">
-            <div class="col-12 mb-3">
-                <label for="start" style="min-width: 40px;">From:</label>
-                <input type="date" id="start" name="start"  class="ms-2 p-1 text-primary border-primary rounded-3"
-                       value="<?=!empty($_GET['start'])?$_GET['start']:'';?>"
-                >
+            <div class="d-flex justify-content-center mb-3">
+                <div class="me-2">
+                    <label for="start">From:</label>
+                    <input type="date" id="start" name="start" style="width: 150px;"
+                           class="ms-2 p-1 text-primary border-primary rounded-3"
+                           value="<?=!empty($_GET['start'])?$_GET['start']:'';?>"
+                    >
+                </div>
+                <div class="me-2">
+                    <label for="end">To:</label>
+                    <input type="date" id="end" name="end" style="width: 150px;"
+                           class="ms-2 p-1 text-primary border-primary rounded-3"
+                           value="<?=!empty($_GET['end'])?$_GET['end']:'';?>"
+                    >
+                </div>
+                <div>
+                    <label for="limit">Rows:</label>
+                    <input type="number" id="limit" name="limit" style="width: 50px;"
+                           class="ms-2 p-1 text-primary border-primary rounded-3"
+                           value="<?=!empty($_GET['limit'])?$_GET['limit']:20;?>"
+                    >
+                </div>
             </div>
-            <div class="col-12 mb-3">
-                <label for="end" style="min-width: 40px;">To:</label>
-                <input type="date" id="end" name="end"  class="ms-2 p-1 text-primary border-primary rounded-3"
-                       value="<?=!empty($_GET['end'])?$_GET['end']:'';?>"
-                >
-            </div>
-            <div class="col-12">
+            <div>
                 <button class="btn btn-primary">CHOOSE</button>
                 <input type="hidden" name="page_name" value="admin">
                 <input type="hidden" name="tab" value="sales">
@@ -32,7 +43,7 @@
 
 
     <div class="table-responsive">
-        <h3>Today total sales: $<?=$sales_total;?></h3>
+        <h3>Total sales (you can choose period or one day): $<?=$sales_total;?></h3>
         <table class="table table-striped table-hover">
             <tr>
                 <th>Barcode</th>

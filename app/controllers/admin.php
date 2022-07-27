@@ -23,33 +23,36 @@ if($tab == 'sales') {
 
     $sale = new Sales();
 
-    $limit = 20;
+    $limit = $_GET['limit'] ?? 20;
+    $limit = (int)$limit;
+    $limit = $limit < 1 ? 20 : $limit;
     $pager = new Pager($limit);
     $offset = $pager->offset;
 
     $query = "SELECT * FROM sales ORDER BY id DESC LIMIT $limit OFFSET $offset";
 
+    //get total sales
+    $year = date("Y");
+    $month = date("m");
+    $day = date("d");
+    $query_total = "SELECT sum(total) as total FROM sales WHERE day(date) = $day AND month(date) = $month AND year(date) = $year";
+
+    //check if date is set
     if($startdate) {
-        $syear = date("Y", strtotime($startdate));
-        $smonth = date("m", strtotime($startdate));
-        $sday = date("d", strtotime($startdate));
+        $sdate = $startdate . " 23:59:59";
+        $query = "SELECT * FROM sales WHERE date >= '$startdate' AND date < '$sdate' ORDER BY id DESC LIMIT $limit OFFSET $offset";
+        $query_total = "SELECT sum(total) as total FROM sales WHERE date >= '$startdate' AND date < '$sdate'";
 
-        $eyear = date("Y", strtotime($enddate));
-        $emonth = date("m", strtotime($enddate));
-        $eday = date("d", strtotime($enddate));
-
-        $query = "SELECT * FROM sales WHERE year(date) = '$syear' AND month(date) = '$smonth' AND day(date) = '$sday' 
-                    ORDER BY id DESC LIMIT $limit OFFSET $offset";
+        if($enddate) {
+            $edate = $enddate . " 23:59:59";
+            $query = "SELECT * FROM sales WHERE date >= '$startdate' AND date < '$edate' ORDER BY id DESC LIMIT $limit OFFSET $offset";
+            $query_total = "SELECT sum(total) as total FROM sales WHERE date >= '$startdate' AND date < '$edate'";
+        }
     }
 
     $sales = $sale->query($query);
 
-    //get today sales
-    $year = date("Y");
-    $month = date("m");
-    $day = date("d");
-    $query = "SELECT sum(total) as total FROM sales WHERE day(date) = $day AND month(date) = $month AND year(date) = $year";
-    $st = $sale->query($query);
+    $st = $sale->query($query_total);
     $sales_total = 0;
 
     if($st) {
