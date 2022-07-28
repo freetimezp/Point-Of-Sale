@@ -106,5 +106,49 @@
 <?php else: ?>
     <div>
         <h3>GRAPH view</h3>
+
+        <?php
+            $canvasY = 400;
+            $canvasX = 1000;
+
+            $data = [];
+            $data['Jan'] = 50;
+            $data['Feb'] = 10;
+            $data['Mar'] = 30;
+            $data['Apr'] = 62;
+            $data['May'] = 70;
+            $data['Jun'] = 40;
+            $data['Jul'] = 90;
+            $data['Aug'] = 100;
+            $data['Sep'] = 20;
+            $data['Oct'] = 30;
+            $data['Nov'] = 10;
+            $data['Dec'] = 60;
+
+            $maxY = max($data);
+            $maxX = count($data);
+            $multiplierY = $canvasY / $maxY;
+            $multiplierX = $canvasX / $maxX;
+
+            $num = 1;
+            $points = "0,$canvasY ";
+            foreach ($data as $key => $value) {
+                $points .= $multiplierX*$num . "," . $canvasY - ($value*$multiplierY) . " ";
+                $num++;
+            }
+            $points .= "$canvasX, $canvasY";
+        ?>
+
+        <div class="graph-table">
+            <svg viewBox="0 0 <?=$canvasX;?> <?=$canvasY;?>" class="border">
+                <polyline points="<?=$points;?>" />
+<!--                <a href="#">-->
+<!--                    <circle r="5" cx="100" cy="100" />-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <circle r="5" cx="200" cy="150" />-->
+<!--                </a>-->
+            </svg>
+        </div>
     </div>
 <?php endif; ?>

@@ -127,6 +127,27 @@ a {
     height: 80px;
 }
 
+.graph-table svg {
+    width: 100%;
+}
+
+.graph-table polyline {
+    stroke-width: 3;
+    stroke: #a9a9ac;
+    fill:#00000022;
+}
+
+.graph-table a circle {
+    stroke-width: 2px;
+    transition: all 0.5s ease;
+    stroke: #a9a9ac;
+    fill: #f5f1a6;
+}
+
+.graph-table a:hover circle {
+    fill: #5de309;
+}
+
 @keyframes appear {
     0% {
         opacity: 0;
