@@ -125,6 +125,8 @@
             $data['Nov'] = 10;
             $data['Dec'] = 60;
 
+            $xText = array_keys($data);
+
             $maxY = max($data);
             $maxX = count($data);
             $multiplierY = $canvasY / $maxY;
@@ -137,17 +139,60 @@
                 $num++;
             }
             $points .= "$canvasX, $canvasY";
+
+            $extraX = 100;
+            $extraY = $maxY / $multiplierY;
         ?>
 
         <div class="graph-table">
-            <svg viewBox="0 0 <?=$canvasX;?> <?=$canvasY;?>" class="border">
-                <polyline points="<?=$points;?>" />
-<!--                <a href="#">-->
-<!--                    <circle r="5" cx="100" cy="100" />-->
-<!--                </a>-->
-<!--                <a href="#">-->
-<!--                    <circle r="5" cx="200" cy="150" />-->
-<!--                </a>-->
+            <svg viewBox="0 -<?=$extraY;?> <?=$canvasX + $extraX;?> <?=$canvasY + ($extraY * 2);?>" class="border">
+                <!-- top to bottom lines-->
+                <?php
+                    for($i = 0; $i < $maxX; $i++) {
+                        $x1 = $i * $multiplierX;
+                        $y1 = 0;
+                        $x2 = $x1;
+                        $y2 = $canvasY;
+                        ?>
+                            <polyline class="poly_top_bottom" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
+                        <?php
+                    }
+                ?>
+                <polyline class="poly_top_bottom" points="<?=$canvasX;?>,0 <?=$canvasX;?>,<?=$canvasY;?>" />
+
+                <!-- left to right lines-->
+                <?php
+                $max_lines = $maxY / $multiplierY;
+                for($i = 0; $i < $max_lines; $i++) {
+                    $x1 = 0;
+                    $y1 = $i * $max_lines;
+                    $x2 = $canvasX;
+                    $y2 = $y1;
+                    ?>
+                            <polyline class="poly_left_right" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
+                        <?php
+                }
+                ?>
+
+                <polyline class="poly" points="<?=$points;?>" />
+
+                <?php
+                    $num = 1;
+                    $points = "0,$canvasY ";
+                    foreach ($data as $key => $value) {
+                        ?>
+                        <circle r="4" cx="<?=$num*$multiplierX;?>" cy="<?=$canvasY-($value*$multiplierY);?>" />
+                        <?php
+                        $num++;
+                    }
+                    $points .= "$canvasX, $canvasY";
+                ?>
+
+                <?php $num = 0; ?>
+                <?php foreach($xText as $value): ?>
+                    <?php $num++; ?>
+                    <text x="<?=($num*$multiplierX) - 15;?>" y="<?=$canvasY + $extraY;?>"><?=$value;?></text>
+                <?php endforeach; ?>
             </svg>
         </div>
     </div>

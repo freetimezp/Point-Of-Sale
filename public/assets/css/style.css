@@ -131,21 +131,27 @@ a {
     width: 100%;
 }
 
-.graph-table polyline {
+.graph-table polyline.poly {
     stroke-width: 3;
     stroke: #a9a9ac;
-    fill:#00000022;
+    fill:#ccc;
 }
 
-.graph-table a circle {
+.graph-table polyline.poly_top_bottom {
+    stroke-width: 1;
+    stroke: #dadae2;
+}
+
+.graph-table polyline.poly_left_right {
+    stroke-width: 1;
+    stroke: #dadae2;
+}
+
+.graph-table circle {
     stroke-width: 2px;
     transition: all 0.5s ease;
     stroke: #a9a9ac;
     fill: #f5f1a6;
-}
-
-.graph-table a:hover circle {
-    fill: #5de309;
 }
 
 @keyframes appear {
