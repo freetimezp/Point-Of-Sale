@@ -141,7 +141,7 @@
             $points .= "$canvasX, $canvasY";
 
             $extraX = 100;
-            $extraY = $maxY / $multiplierY;
+            $extraY = 15;
         ?>
 
         <div class="graph-table">
@@ -154,7 +154,7 @@
                         $x2 = $x1;
                         $y2 = $canvasY;
                         ?>
-                            <polyline class="poly_top_bottom" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
+                        <polyline class="poly_top_bottom" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
                         <?php
                     }
                 ?>
@@ -162,20 +162,23 @@
 
                 <!-- left to right lines-->
                 <?php
-                $max_lines = $maxY / $multiplierY;
+                $max_lines = count($data);
+                $segmentY = floor($canvasY / $max_lines);
                 for($i = 0; $i < $max_lines; $i++) {
                     $x1 = 0;
-                    $y1 = $i * $max_lines;
+                    $y1 = $i * $segmentY;
                     $x2 = $canvasX;
                     $y2 = $y1;
+
                     ?>
-                            <polyline class="poly_left_right" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
-                        <?php
+                    <polyline class="poly_left_right" points="<?=$x1;?>,<?=$y1;?> <?=$x2;?>,<?=$y2;?>" />
+                    <?php
                 }
                 ?>
 
                 <polyline class="poly" points="<?=$points;?>" />
 
+                <!-- set circles-->
                 <?php
                     $num = 1;
                     $points = "0,$canvasY ";
@@ -188,11 +191,34 @@
                     $points .= "$canvasX, $canvasY";
                 ?>
 
+                <!-- set X values-->
                 <?php $num = 0; ?>
                 <?php foreach($xText as $value): ?>
                     <?php $num++; ?>
-                    <text x="<?=($num*$multiplierX) - 15;?>" y="<?=$canvasY + $extraY;?>"><?=$value;?></text>
+                    <text x="<?=($num*$multiplierX) - 15;?>" y="<?=$canvasY + $extraY;?>" class="x-text"><?=$value;?></text>
                 <?php endforeach; ?>
+
+                <!-- set Y values-->
+                <?php
+                $max_lines = count($data);
+                $segmentY = floor($canvasY / $max_lines);
+                $num = $maxY;
+
+                for($i = 0; $i < $max_lines; $i++) {
+                    $x = $canvasX;
+                    $y = $i * $segmentY;
+
+                    if(round($num) < 0) {
+                        break;
+                    }
+
+                    ?>
+                    <text x="<?=$x + 15;?>" y="<?=$y + 5;?>" class="y-text"><?=round($num);?></text>
+                    <?php
+                    $max_lines = $max_lines ? $max_lines : 1;
+                    $num -= $maxY / $max_lines;
+                }
+                ?>
             </svg>
         </div>
     </div>

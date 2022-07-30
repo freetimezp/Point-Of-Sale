@@ -129,6 +129,7 @@ a {
 
 .graph-table svg {
     width: 100%;
+    padding: 5px;
 }
 
 .graph-table polyline.poly {
@@ -153,6 +154,15 @@ a {
     stroke: #a9a9ac;
     fill: #f5f1a6;
 }
+
+.graph-table .x-text {
+    font-size: 12px;
+}
+
+.graph-table .y-text {
+    font-size: 10px;
+}
+
 
 @keyframes appear {
     0% {
