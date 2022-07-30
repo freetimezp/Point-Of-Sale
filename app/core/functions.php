@@ -158,7 +158,35 @@ function get_user_by_id($id) {
     return $user->first(['id' => $id]);
 }
 
+function generate_daily_data($records) {
+    $arr = [];
 
+    for($i = 1; $i < 24; $i++) {
+        if(!isset($arr[$i])) {
+            $arr[$i] = 0;
+        }
+
+        if(is_array($records)) {
+            foreach ($records as $row) {
+                $hour = date("H", strtotime($row['date']));
+
+                if($hour == $i) {
+                    $arr[$i] += $row['total'];
+                }
+            }
+        }
+    }
+
+    return $arr;
+}
+
+function generate_month_data($records) {
+
+}
+
+function generate_year_data($records) {
+
+}
 
 
 
