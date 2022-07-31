@@ -112,7 +112,16 @@
             $data = [];
             $data = generate_daily_data($today_records);
 
+            $graph->title = "Today's sales";
             $graph->display($data);
+        ?>
+
+        <?php
+        $data = [];
+        $data = generate_month_data($month_records);
+
+        $graph->title = "Month sales";
+        $graph->display($data);
         ?>
     </div>
 <?php endif; ?>

@@ -181,7 +181,26 @@ function generate_daily_data($records) {
 }
 
 function generate_month_data($records) {
+    $arr = [];
+    $total_days = cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y"));
 
+    for($i = 1; $i <= $total_days; $i++) {
+        if(!isset($arr[$i])) {
+            $arr[$i] = 0;
+        }
+
+        if(is_array($records)) {
+            foreach ($records as $row) {
+                $day = date("d", strtotime($row['date']));
+
+                if($day == $i) {
+                    $arr[$i] += $row['total'];
+                }
+            }
+        }
+    }
+
+    return $arr;
 }
 
 function generate_year_data($records) {

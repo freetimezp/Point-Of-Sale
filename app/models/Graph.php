@@ -6,6 +6,7 @@ class Graph
 {
     public $canvasX = 1000;
     public $canvasY = 400;
+    public $title = "Graph title";
 
     public function display($data) {
         $canvasY = $this->canvasY;
@@ -20,6 +21,12 @@ class Graph
 
         $maxY = max($data);
         $maxX = count($data);
+
+        if($maxY == 0) {
+            echo "Not sales yet!";
+            return;
+        }
+
         $multiplierY = $canvasY / $maxY;
         $multiplierX = $canvasX / $maxX;
 
@@ -110,6 +117,10 @@ class Graph
                     $num -= $maxY / $max_lines;
                 }
                 ?>
+
+                <text x="20" y="20">
+                    <?=$this->title;?>
+                </text>
             </svg>
         </div>
 <?php
