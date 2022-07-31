@@ -113,6 +113,7 @@
             $data = generate_daily_data($today_records);
 
             $graph->title = "Today's sales";
+            $graph->xTitle = "Hours in 1 day";
             $graph->display($data);
         ?>
 
@@ -121,6 +122,7 @@
         $data = generate_month_data($month_records);
 
         $graph->title = "Month sales";
+        $graph->xTitle = "Days in 1 month";
         $graph->display($data);
         ?>
 
@@ -129,6 +131,7 @@
         $data = generate_year_data($year_records);
 
         $graph->title = "Year sales";
+        $graph->xTitle = "Month in 1 year";
         $graph->display($data);
         ?>
     </div>

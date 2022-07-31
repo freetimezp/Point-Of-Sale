@@ -7,6 +7,7 @@ class Graph
     public $canvasX = 1000;
     public $canvasY = 400;
     public $title = "Graph title";
+    public $xTitle = "Title X";
 
     public function display($data) {
         $canvasY = $this->canvasY;
@@ -39,7 +40,7 @@ class Graph
         $points .= "$canvasX, $canvasY";
 
         $extraX = 100;
-        $extraY = 15;
+        $extraY = 50;
     ?>
 
         <div class="graph-table">
@@ -84,6 +85,11 @@ class Graph
                         ?>
                         <circle r="4" cx="<?=$num*$multiplierX;?>" cy="<?=$canvasY-($value*$multiplierY);?>" />
                         <?php
+                            if($value != 0) {
+                                ?>
+                                <text x="<?=($num*$multiplierX)-25;?>" y="<?=($canvasY-($value*$multiplierY))+10;?>" style="font-size:12px;"><?=$value.'$';?></text>
+                                <?php
+                                }
                         $num++;
                     }
                     $points .= "$canvasX, $canvasY";
@@ -93,7 +99,7 @@ class Graph
                 <?php $num = 0; ?>
                 <?php foreach($xText as $value): ?>
                     <?php $num++; ?>
-                    <text x="<?=($num*$multiplierX) - 15;?>" y="<?=$canvasY + $extraY;?>" class="x-text"><?=$value;?></text>
+                    <text x="<?=($num*$multiplierX) - 15;?>" y="<?=$canvasY + ($extraY/2);?>" class="x-text"><?=$value;?></text>
                 <?php endforeach; ?>
 
                 <!-- set Y values-->
@@ -118,8 +124,14 @@ class Graph
                 }
                 ?>
 
+                <!-- graph title -->
                 <text x="20" y="20">
                     <?=$this->title;?>
+                </text>
+
+                <!-- X title -->
+                <text class="x-title" x="<?=($canvasX/2) - (strlen($this->xTitle)/2)*8;?>" y="<?=$canvasY + ($extraY/1.2);?>">
+                    <?='(-->'. $this->xTitle . '<--)';?>
                 </text>
             </svg>
         </div>

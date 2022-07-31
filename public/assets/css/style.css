@@ -140,7 +140,13 @@ a {
 
 .graph-table svg {
     width: 100%;
-    padding: 5px;
+    padding: 25px 5px 40px;
+}
+
+.graph-table .x-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: lowercase;
 }
 
 .graph-table polyline.poly {
