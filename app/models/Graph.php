@@ -111,7 +111,7 @@ class Graph
                     }
 
                     ?>
-                    <text x="<?=$x + 15;?>" y="<?=$y + 5;?>" class="y-text"><?=round($num);?></text>
+                    <text x="<?=$x + 15;?>" y="<?=$y + 5;?>" class="y-text"><?=round($num).'$';?></text>
                     <?php
                     $max_lines = $max_lines ? $max_lines : 1;
                     $num -= $maxY / $max_lines;

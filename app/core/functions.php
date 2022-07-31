@@ -204,7 +204,26 @@ function generate_month_data($records) {
 }
 
 function generate_year_data($records) {
+    $arr = [];
+    $month_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+    for($i = 0; $i <= 11; $i++) {
+        if(!isset($arr[$month_arr[$i]])) {
+            $arr[$month_arr[$i]] = 0;
+        }
+
+        if(is_array($records)) {
+            foreach ($records as $row) {
+                $month = date("m", strtotime($row['date']));
+
+                if($month == $i) {
+                    $arr[$month_arr[$i]] += $row['total'];
+                }
+            }
+        }
+    }
+
+    return $arr;
 }
 
 

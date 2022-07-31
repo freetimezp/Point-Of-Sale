@@ -123,5 +123,13 @@
         $graph->title = "Month sales";
         $graph->display($data);
         ?>
+
+        <?php
+        $data = [];
+        $data = generate_year_data($year_records);
+
+        $graph->title = "Year sales";
+        $graph->display($data);
+        ?>
     </div>
 <?php endif; ?>
