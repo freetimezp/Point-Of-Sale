@@ -2,6 +2,21 @@
 
 $tab = isset($_GET['tab']) ? $_GET['tab'] : 'dashboard';
 
+if($tab == 'dashboard') {
+    $user = new User();
+    $query = "SELECT * FROM users";
+    $users = $user->query($query);
+
+    $product = new Product();
+    $query2 = "SELECT * FROM products";
+    $products = $product->query($query2);
+
+    $sale = new Sales();
+    $query3 = "SELECT sum(total) as total FROM sales";
+    $sales = $user->query($query3);
+    $total = $sales[0]['total'];
+}
+
 if($tab == 'products') {
     $product = new Product();
     $products = $product->query("SELECT * FROM products ORDER BY id DESC");

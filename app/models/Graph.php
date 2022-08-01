@@ -24,7 +24,7 @@ class Graph
         $maxX = count($data);
 
         if($maxY == 0) {
-            echo "Not sales yet!";
+            //echo "Not sales yet!";
             return;
         }
 

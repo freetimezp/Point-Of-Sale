@@ -59,7 +59,8 @@
                         break;
 
                     default:
-                            break;
+                        require views_path("admin/dashboard");
+                        break;
                 }
             ?>
         </div>
