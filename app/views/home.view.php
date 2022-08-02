@@ -148,6 +148,7 @@
 
         let total_amount_div = document.querySelector(".js-total-amount");
         total_amount = total_amount.toFixed(2);
+        total_amount = parseInt(total_amount);
         total_amount_div.innerHTML = total_amount;
         GTOTAL = total_amount;
     }
@@ -339,7 +340,7 @@
         e.preventDefault();
         let amount = document.querySelector(".js-amount-paid-input").value.trim();
 
-        if(amount < GTOTAL || amount == 0) {
+        if(amount < GTOTAL || amount <= 0) {
             alert("Amount be higher or equal to total amount!");
             return;
         }
@@ -369,6 +370,14 @@
             text: ITEMS_NEW
         });
 
+        //open receipt page
+        print_receipt({
+            company: 'POINT-OF-SALE',
+            amount: amount,
+            change: CHANGE,
+            data: CART_ITEMS
+        });
+
         //clear items in cart
         CART_ITEMS = [];
         refresh_items_display();
@@ -378,6 +387,12 @@
             data_type: "search",
             text: ""
         });
+    }
+
+    function print_receipt(obj){
+        let vars = JSON.stringify(obj);
+
+        window.open('index.php?page_name=print&vars='+vars,'printpage',"width=400px;");
     }
 
     send_data({
