@@ -105,6 +105,8 @@
     let GTOTAL = 0;
     let CHANGE = 0;
 
+    RECEIPT_WINDOW = null;
+
     function add_item_to_cart(e) {
         e.preventDefault();
         if(e.target.tagName == "IMG") {
@@ -392,8 +394,11 @@
 
     function print_receipt(obj){
         let vars = JSON.stringify(obj);
+        RECEIPT_WINDOW = window.open('index.php?page_name=print&vars='+vars,'printpage',"popup");
 
-        window.open('index.php?page_name=print&vars='+vars,'printpage',"popup");
+        setTimeout(function () {
+            RECEIPT_WINDOW.close();
+        }, 2000);
     }
 
     send_data({

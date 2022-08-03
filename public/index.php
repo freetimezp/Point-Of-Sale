@@ -3,7 +3,7 @@
 session_start();
 require "../app/core/init.php";
 
-define("ABSPATH", true);
+define("ABSPATH", __DIR__);
 
 $controller = 'home';
 

@@ -1,3 +1,15 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+        $WshShell = new COM("WScript.Shell");
+        $obj = $WshShell->Run("cmd /c wscript.exe " . ABSPATH . "\\script.vbs", 0, true);
+        //$obj = $WshShell->Run("cmd /c wscript.exe www/public/script.vbs", 0, true);
+
+        $WshShell = new COM("WScript.Shell");
+        $obj = $WshShell->Run("cmd /c wscript.exe " . ABSPATH . "\\script.vbs", 0, true);
+        //$obj = $WshShell->Run("cmd /c wscript.exe www/public/script.vbs", 0, true);
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,5 +71,16 @@ $obj = json_decode($vars, true);
 </div>
 
 </body>
-<script src="assets/js/bootstrap.min.js"></script>
+<script>
+    window.print();
+
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener('readystatechange', function () {
+        if(ajax.readyState == 4) {
+            //console.log(ajax.responseText);
+        }
+    });
+    ajax.open('POST', '', true);
+    ajax.send();
+</script>
 </html>
