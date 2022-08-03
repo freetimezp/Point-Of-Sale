@@ -375,6 +375,7 @@
             company: 'POINT-OF-SALE',
             amount: amount,
             change: CHANGE,
+            gtotal: GTOTAL,
             data: CART_ITEMS
         });
 
@@ -392,7 +393,7 @@
     function print_receipt(obj){
         let vars = JSON.stringify(obj);
 
-        window.open('index.php?page_name=print&vars='+vars,'printpage',"width=400px;");
+        window.open('index.php?page_name=print&vars='+vars,'printpage',"popup");
     }
 
     send_data({
